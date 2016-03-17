@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+html {
+  min-height: 100%;
+}
+
+body {
+  color: #333;
+  background-attachment: fixed;
+  background-color: #666;
+  background-image: url("/image/hero.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+}
+
+a {
+  color: #337ab7;
+}
+
+em {
+  font-style: normal;
+  font-weight: bold;
+}
+
+body > header {
+  background-color: #666;
+  background-color: rgba(102, 102, 102, .8);
+  color: #ddd;
+  margin: 0;
+  padding: .5em 0 2em 1em;
+  position: relative;
+}
+
+body > header h1 {
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+}
+
+body > header .description {
+  font-size: .75em;
+}
+
+body > header nav {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+}
+
+body > header nav ul {
+  margin: 0;
+  padding: .25em 1em 0 0;
+  text-align: right;
+}
+
+body > header nav li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+body > header nav a {
+  color: inherit;
+}
+
+body > footer {
+  background-color: #ddd;
+  background-color: rgba(211, 211, 211, .8);
+  color: #333;
+}
+
+body > footer .copyright {
+  font-size: .85em;
+  margin: 0;
+  padding: .5em 0;
+  text-align: center;
+}
+
+body > main {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, .9);
+  min-height: 100vh;
+  padding: .5em 1em 1em;
+}
+
+.screenshots {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  width: 100%;
+}
+
+.screenshot {
+  background-color: #000;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  height: 300px;
+  margin: 0;
+  opacity: .8;
+  padding: 0;
+  transition: opacity .5s ease 0s;
+  min-width: 100%;
+}
+
+@media(min-width: 768px) {
+  .screenshot {
+    flex-basis: 50%;
+    min-width: 50%;
+  }
+}
+
+.screenshot.enabled,
+.screenshot:hover {
+  opacity: 1;
+}
+
+.screenshot a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.screenshot.enabled a {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, .8);
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  right: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+}
+
+.screenshot .image {
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.screenshot.enabled .image {
+  background-size: contain;
+}
