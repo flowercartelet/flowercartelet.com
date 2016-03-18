@@ -105,6 +105,14 @@
         return this.props.onClick.call(this, event);
       }
     },
+    componentWillReceiveProps: function(nextProps) {
+      var root = root || document.querySelector(':root');
+      if (!this.props.enabled && nextProps.enabled) {
+        root.classList.add('overlay-enabled');
+      } else if (this.props.enabled && !nextProps.enabled) {
+        root.classList.remove('overlay-enabled');
+      }
+    },
     render: function() {
       var screenshot = this.props.screenshot;
       return React.createElement('div', {
