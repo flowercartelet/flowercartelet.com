@@ -4,6 +4,10 @@ html {
   min-height: 100%;
 }
 
+html.overlay-enabled {
+  overflow: hidden;
+}
+
 body {
   color: #333;
   background-attachment: fixed;
