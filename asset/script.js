@@ -69,14 +69,14 @@
       return React.createElement('div', {
         className: 'screenshots'
       }, this.state.screenshots.map(function(screenshot) {
-        screenshot.uri = (function(uri) {
+        screenshot.images.original.uri = (function(uri) {
           var anchor = document.createElement('a');
           anchor.href = uri
           return anchor.href;
-        })(screenshot.uri);
+        })(screenshot.images.original.uri);
         return React.createElement(ScreenshotComponent, {
-          enabled: this.state.currentUri === screenshot.uri,
-          key: screenshot.uri,
+          enabled: this.state.currentUri === screenshot.images.original.uri,
+          key: screenshot.images.original.uri,
           onClick: this.handleClickScreenshot,
           screenshot: screenshot
         });
@@ -89,33 +89,40 @@
     propTypes: {
       enabled: React.PropTypes.bool.isRequired,
       onClick: React.PropTypes.func,
-      screenshot: React.PropTypes.arrayOf(React.PropTypes.shape({
+      screenshot: React.PropTypes.shape({
         createdAt: React.PropTypes.string,
-        height: React.PropTypes.number,
-        uri: React.PropTypes.string.isRequired,
-        width: React.PropTypes.number
-      }))
+        images: React.PropTypes.objectOf(React.PropTypes.shape({
+          height: React.PropTypes.number,
+          uri: React.PropTypes.string.isRequired,
+          width: React.PropTypes.number
+        }))
+      })
     },
     getDefaultProps: function() {
       enabled: false
     },
+    getImageUri: function() {
+      var images = this.props.screenshot.images;
+      var size = this.props.enabled ? 'original' : 'thumbnail';
+      return images[size].uri;
+    },
     handleClick: function(event) {
       if (typeof this.props.onClick === 'function') {
         return this.props.onClick(event);
-        return this.props.onClick.call(this, event);
       }
     },
     render: function() {
       var screenshot = this.props.screenshot;
+      var images = screenshot.images;
       return React.createElement('div', {
         className: 'screenshot' + (this.props.enabled ? ' enabled' : '')
       }, React.createElement('a', {
-        href: screenshot.uri,
+        href: images.original.uri,
         onClick: this.handleClick
       }, React.createElement('div', {
         className: 'image',
         style: {
-          backgroundImage: 'url("' + screenshot.uri + '")'
+          backgroundImage: 'url("' + this.getImageUri() + '")'
         }
       })));
     }
