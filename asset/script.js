@@ -41,7 +41,9 @@
       };
     },
     componentDidMount: function() {
-      request('/image/screenshots.json').then(function(connect) {
+      root = root || document.querySelector(':root');
+      var screenshotListUri = root.dataset.screenshotListUri;
+      request(screenshotListUri).then(function(connect) {
         var response = connect.response;
         this.setState({
           enabledUri: null,
