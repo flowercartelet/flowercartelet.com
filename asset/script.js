@@ -119,7 +119,7 @@
       }
     },
     componentWillReceiveProps: function(nextProps) {
-      var root = root || document.querySelector(':root');
+      root = root || document.querySelector(':root');
       if (!this.props.enabled && nextProps.enabled) {
         root.classList.add('overlay-enabled');
       } else if (this.props.enabled && !nextProps.enabled) {
