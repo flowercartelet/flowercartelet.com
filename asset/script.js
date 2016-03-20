@@ -25,6 +25,12 @@
     });
   }
 
+  function getAbsoluteUri(uri) {
+    var anchor = document.createElement('a');
+    anchor.href = uri;
+    return anchor.href;
+  }
+
   var ApplicationComponent = React.createClass({
     displayName: 'ApplicationComponent',
     render: function() {
@@ -73,11 +79,7 @@
         React.createElement('div', {
           className: 'screenshots'
         }, this.state.screenshots.map(function(screenshot) {
-          screenshot.images.original.uri = (function(uri) {
-            var anchor = document.createElement('a');
-            anchor.href = uri
-            return anchor.href;
-          })(screenshot.images.original.uri);
+          screenshot.images.original.uri = getAbsoluteUri(screenshot.images.original.uri);
           return React.createElement(ScreenshotComponent, {
             enabled: this.state.currentUri === screenshot.images.original.uri,
             key: screenshot.images.original.uri,
