@@ -2,6 +2,11 @@
   'use script';
 
   var root;
+  
+  function getRoot() {
+    root = root || document.querySelector(':root');
+    return root;
+  }
 
   function request(uri, options) {
     options = options || {};
@@ -47,8 +52,8 @@
       };
     },
     componentDidMount: function() {
-      root = root || document.querySelector(':root');
-      var screenshotListUri = root.dataset.screenshotListUri;
+      var target = getRoot();
+      var screenshotListUri = target.dataset.screenshotListUri;
       request(screenshotListUri).then(function(connect) {
         var response = connect.response;
         this.setState({
@@ -121,11 +126,11 @@
       }
     },
     componentWillReceiveProps: function(nextProps) {
-      root = root || document.querySelector(':root');
+      var target = getRoot();
       if (!this.props.enabled && nextProps.enabled) {
-        root.classList.add('overlay-enabled');
+        target.classList.add('overlay-enabled');
       } else if (this.props.enabled && !nextProps.enabled) {
-        root.classList.remove('overlay-enabled');
+        target.classList.remove('overlay-enabled');
       }
     },
     render: function() {
