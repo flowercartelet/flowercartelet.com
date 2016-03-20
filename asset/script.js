@@ -2,7 +2,7 @@
   'use script';
 
   var root;
-  
+
   function getRoot() {
     root = root || document.querySelector(':root');
     return root;
