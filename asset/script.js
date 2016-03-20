@@ -104,7 +104,9 @@
       })
     },
     getDefaultProps: function() {
-      enabled: false
+      return {
+        enabled: false
+      };
     },
     getImageUri: function() {
       var images = this.props.screenshot.images;
