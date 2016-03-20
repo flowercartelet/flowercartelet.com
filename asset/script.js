@@ -68,21 +68,24 @@
       }
     },
     render: function() {
-      return React.createElement('div', {
-        className: 'screenshots'
-      }, this.state.screenshots.map(function(screenshot) {
-        screenshot.images.original.uri = (function(uri) {
-          var anchor = document.createElement('a');
-          anchor.href = uri
-          return anchor.href;
-        })(screenshot.images.original.uri);
-        return React.createElement(ScreenshotComponent, {
-          enabled: this.state.currentUri === screenshot.images.original.uri,
-          key: screenshot.images.original.uri,
-          onClick: this.handleClickScreenshot,
-          screenshot: screenshot
-        });
-      }.bind(this)));
+      return React.createElement('section', null, [
+        React.createElement('h2', null, 'スクリーンショット'),
+        React.createElement('div', {
+          className: 'screenshots'
+        }, this.state.screenshots.map(function(screenshot) {
+          screenshot.images.original.uri = (function(uri) {
+            var anchor = document.createElement('a');
+            anchor.href = uri
+            return anchor.href;
+          })(screenshot.images.original.uri);
+          return React.createElement(ScreenshotComponent, {
+            enabled: this.state.currentUri === screenshot.images.original.uri,
+            key: screenshot.images.original.uri,
+            onClick: this.handleClickScreenshot,
+            screenshot: screenshot
+          });
+        }.bind(this)))
+      ]);
     }
   });
 
