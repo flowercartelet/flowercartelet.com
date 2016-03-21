@@ -13,7 +13,7 @@ body {
   color: #333;
   background-attachment: fixed;
   background-color: #666;
-  background-image: url("/image/hero.png");
+  background-image: url("/image/hero.jpeg");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -96,7 +96,7 @@ body > main {
 section h2 {
   background-attachment: fixed;
   background-color: #666;
-  background-image: url("/image/hero.png");
+  background-image: url("/image/hero.jpeg");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -114,28 +114,57 @@ section h2 {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0;
-  padding: .5em 1em 1em;
+  padding: .5em 0 1em;
+  transition:
+    padding-left 1s ease 0s,
+    padding-right 1s ease 0s;
   width: 100%;
+}
+
+@media(min-width: 768px) {
+  .screenshots {
+    padding-left: .5em;
+    padding-right: .5em;
+  }
 }
 
 .screenshot {
   background-color: #000;
   box-sizing: border-box;
   flex-basis: 100%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  height: 300px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 200px;
   margin: 0;
   opacity: .8;
   padding: 0;
-  transition: opacity .5s ease 0s;
+  transition:
+    flex-basis .5s ease 0s,
+    height .5s ease 0s,
+    min-width .5s ease 0s,
+    opacity .5s ease 0s;
   min-width: 100%;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 350px) {
+  .screenshot {
+    height: 250px;
+  }
+}
+
+@media(min-width: 500px) {
   .screenshot {
     flex-basis: 50%;
+    height: 300px;
     min-width: 50%;
+  }
+}
+
+@media(min-width: 1000px) {
+  .screenshot {
+    flex-basis: 33%;
+    height: 200px;
+    min-width: 33%;
   }
 }
 
