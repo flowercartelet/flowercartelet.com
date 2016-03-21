@@ -8,32 +8,14 @@
     return root;
   }
 
-  function request(uri, options) {
-    options = options || {};
-    var method = options['method'] || 'get';
-    var body = options['body'] || null;
-    return new Promise(function(resolve, reject) {
-      var connect = new XMLHttpRequest();
-      connect.open(method, uri);
-      connect.responseType = 'json';
-      connect.addEventListener('load', function() {
-        if (connect.status === 200) {
-          resolve(connect);
-        } else {
-          reject(connect);
-        }
-      });
-      connect.addEventListener('error', function() {
-        reject(connect);
-      });
-      connect.send(body);
-    });
-  }
-
   function getAbsoluteUri(uri) {
     var anchor = document.createElement('a');
     anchor.href = uri;
     return anchor.href;
+  }
+
+  function parseJson(response) {
+    return response.json();
   }
 
   var ApplicationComponent = React.createClass({
@@ -54,8 +36,7 @@
     componentDidMount: function() {
       var target = getRoot();
       var screenshotListUri = target.dataset.screenshotListUri;
-      request(screenshotListUri).then(function(connect) {
-        var response = connect.response;
+      fetch(screenshotListUri).then(parseJson).then(function(response) {
         this.setState({
           enabledUri: null,
           screenshots: response
