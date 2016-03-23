@@ -138,6 +138,7 @@ section h2 {
   margin: 0;
   opacity: .8;
   padding: 0;
+  position: relative;
   transition:
     flex-basis .5s ease 0s,
     height .5s ease 0s,
@@ -202,4 +203,24 @@ section h2 {
 
 .screenshot.enabled .image {
   background-size: contain;
+}
+
+.screenshot time {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, .8);
+  border-radius: .8em;
+  bottom: 0;
+  color: #777;
+  display: block;
+  font-size: .75em;
+  margin: 0 .5em .5em 0;
+  opacity: 1;
+  padding: .25em 1em;
+  position: absolute;
+  right: 0;
+  transition: opacity .25s ease 0s;
+}
+
+.screenshot:hover time {
+  opacity: 0;
 }

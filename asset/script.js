@@ -20,6 +20,11 @@
 
   var ApplicationComponent = React.createClass({
     displayName: 'ApplicationComponent',
+    componentDidMount: function() {
+      var target = getRoot();
+      var locale = target.lang;
+      moment.locale(locale);
+    },
     render: function() {
       return React.createElement(ScreenshotsComponent, null);
     }
@@ -106,6 +111,12 @@
         return this.props.onClick(event);
       }
     },
+    componentDidMount: function() {
+      var target = this.refs.createdAt;
+      var createdAt = target.getAttribute('dateTime');
+      var label = moment(createdAt).fromNow();
+      target.textContent = label;
+    },
     componentWillReceiveProps: function(nextProps) {
       var target = getRoot();
       if (!this.props.enabled && nextProps.enabled) {
@@ -127,7 +138,10 @@
         style: {
           backgroundImage: 'url("' + this.getImageUri() + '")'
         }
-      })));
+      }), React.createElement('time', {
+        dateTime: screenshot.createdAt,
+        ref: 'createdAt'
+      }, screenshot.createdAt)));
     }
   });
 
