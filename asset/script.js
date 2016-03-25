@@ -48,6 +48,12 @@
         });
       }.bind(this));
     },
+    shouldComponentUpdate: function(nextProps, nextState) {
+      return (
+        this.state.currentUri !== nextState.currentUri ||
+        !_.isEqual(this.state.screenshots, nextState.screenshots)
+      );
+    },
     handleClickScreenshot: function(event) {
       var target = event.target;
       var count = 0;
@@ -124,6 +130,9 @@
       } else if (this.props.enabled && !nextProps.enabled) {
         target.classList.remove('overlay-enabled');
       }
+    },
+    shouldComponentUpdate: function(nextProps) {
+      return this.props.enabled !== nextProps.enabled;
     },
     render: function() {
       var screenshot = this.props.screenshot;
