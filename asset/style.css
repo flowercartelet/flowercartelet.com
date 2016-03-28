@@ -58,7 +58,7 @@ body > header nav {
 
 body > header nav ul {
   margin: 0;
-  padding: .25em 1em 0 0;
+  padding: .25em 1em .25em 0;
   text-align: right;
 }
 
@@ -70,6 +70,30 @@ body > header nav li {
 
 body > header nav a {
   color: inherit;
+}
+
+body > header nav .share {
+  background-color: #333;
+  background-color: rgba(51, 51, 51, .75);
+  border-radius: .3em;
+  color: #fff;
+  font-size: .7em;
+  font-weight: bold;
+  padding: .3em .7em .3em .7em;
+  text-decoration: none;
+}
+
+body > header nav .share:hover {
+  background-color: #333;
+}
+
+body > header nav .share.twitter {
+  background-color: #55acee;
+  background-color: rgba(85, 172, 238, .75);
+}
+
+body > header nav .share.twitter:hover {
+  background-color: #55acee;
 }
 
 body > footer {
