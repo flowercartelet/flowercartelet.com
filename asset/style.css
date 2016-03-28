@@ -31,7 +31,7 @@ em {
   font-weight: bold;
 }
 
-body > header {
+.ApplicationComponent > header {
   background-color: #666;
   background-color: rgba(102, 102, 102, .8);
   color: #ddd;
@@ -40,39 +40,43 @@ body > header {
   position: relative;
 }
 
-body > header h1 {
+.ApplicationComponent > header h1 {
   font-size: 1.5em;
   margin: 0;
   padding: 0;
 }
 
-body > header .description {
+.ApplicationComponent > header .description {
   font-size: .75em;
 }
 
-body > header nav {
+.ApplicationComponent > header nav {
   bottom: 0;
   position: absolute;
   right: 0;
 }
 
-body > header nav ul {
+.ApplicationComponent > header nav ul {
   margin: 0;
   padding: .25em 1em .25em 0;
   text-align: right;
 }
 
-body > header nav li {
+.ApplicationComponent > header nav li {
   display: inline-block;
   margin: 0;
   padding: 0;
 }
 
-body > header nav a {
+.ApplicationComponent > header nav li + li {
+  padding-left: .33em;
+}
+
+.ApplicationComponent > header nav a {
   color: inherit;
 }
 
-body > header nav .share {
+.ApplicationComponent > header nav .share {
   background-color: #333;
   background-color: rgba(51, 51, 51, .75);
   border-radius: .3em;
@@ -83,33 +87,33 @@ body > header nav .share {
   text-decoration: none;
 }
 
-body > header nav .share:hover {
+.ApplicationComponent > header nav .share:hover {
   background-color: #333;
 }
 
-body > header nav .share.twitter {
+.ApplicationComponent > header nav .share.twitter {
   background-color: #55acee;
   background-color: rgba(85, 172, 238, .75);
 }
 
-body > header nav .share.twitter:hover {
+.ApplicationComponent > header nav .share.twitter:hover {
   background-color: #55acee;
 }
 
-body > footer {
+.ApplicationComponent > footer {
   background-color: #ddd;
   background-color: rgba(211, 211, 211, .8);
   color: #333;
 }
 
-body > footer .copyright {
+.ApplicationComponent > footer .copyright {
   font-size: .85em;
   margin: 0;
   padding: .5em 0;
   text-align: center;
 }
 
-body > main {
+main {
   background-color: #fff;
   background-color: rgba(255, 255, 255, .9);
   min-height: 100vh;

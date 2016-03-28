@@ -26,7 +26,78 @@
       moment.locale(locale);
     },
     render: function() {
-      return React.createElement(ScreenshotsComponent, null);
+      return React.createElement('div', {
+        className: 'ApplicationComponent'
+      }, [
+        React.createElement(HeaderComponent, null),
+        React.createElement('main', null, React.createElement(ScreenshotsComponent, null)),
+        React.createElement(FooterComponent, null)
+      ]);
+    }
+  });
+
+  var HeaderComponent = React.createClass({
+    displayName: 'HeaderComponent',
+    shouldComponentUpdate: function(nextProps, nextState) {
+      return !_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState);
+    },
+    render: function() {
+      return React.createElement('header', null, [
+        React.createElement('h1', null, 'かーたんのほーむぺーじ'),
+        React.createElement('p', {
+          className: 'description'
+        }, [
+          'FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っている',
+          React.createElement('em', null, 'Lily Cartelet'),
+          'のウェブサイトです。FINAL FANTASY XIVの個人的なスクリーンショットを置くための場所です。'
+        ]),
+        React.createElement('nav', null, [
+          React.createElement('ul', null, [
+            React.createElement('li', null, [
+              React.createElement('a', {
+                className: 'share twitter',
+                href: 'https://twitter.com/flowercartelet'
+              }, [
+                React.createElement('i', {
+                  className: 'fa fa-twitter'
+                }),
+                ' Twitter'
+              ])
+            ]),
+            React.createElement('li', null, [
+              React.createElement('a', {
+                className: 'share lodestone',
+                href: 'http://jp.finalfantasyxiv.com/lodestone/character/3244798/'
+              }, [
+                'Lodestone ',
+                React.createElement('i', {
+                  className: 'fa fa-external-link'
+                })
+              ])
+            ])
+          ])
+        ])
+      ]);
+    }
+  });
+
+  var FooterComponent = React.createClass({
+    displayName: 'FooterComponent',
+    shouldComponentUpdate: function(nextProps, nextState) {
+      return !_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState);
+    },
+    render: function() {
+      return React.createElement('footer', null, [
+        React.createElement('p', {
+          className: 'copyright'
+        }, [
+          'Copyright © 2016 ',
+          React.createElement('a', {
+            href: 'mailto:flowercartelet@gmail.com',
+            rel: 'author'
+          }, 'Lily Cartelet')
+        ])
+      ]);
     }
   });
 
@@ -139,18 +210,24 @@
       var images = screenshot.images;
       return React.createElement('div', {
         className: 'screenshot' + (this.props.enabled ? ' enabled' : '')
-      }, React.createElement('a', {
-        href: images.original.uri,
-        onClick: this.handleClick
-      }, React.createElement('div', {
-        className: 'image',
-        style: {
-          backgroundImage: 'url("' + this.getImageUri() + '")'
-        }
-      }), React.createElement('time', {
-        dateTime: screenshot.createdAt,
-        ref: 'createdAt'
-      }, screenshot.createdAt)));
+      }, [
+        React.createElement('a', {
+          href: images.original.uri,
+          onClick: this.handleClick
+        }, [
+          React.createElement('div', {
+            className: 'image',
+            style: {
+              backgroundImage: 'url("' + this.getImageUri() + '")'
+            }
+          }, [
+            React.createElement('time', {
+              dateTime: screenshot.createdAt,
+              ref: 'createdAt'
+            }, screenshot.createdAt)
+          ])
+        ])
+      ]);
     }
   });
 
