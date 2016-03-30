@@ -81,21 +81,21 @@
                 }),
                 ' Twitter'
               )
-            )
-          ),
-          React.createElement(
-            'li',
-            null,
+            ),
             React.createElement(
-              'a',
-              {
-                className: 'share lodestone',
-                href: 'http://jp.finalfantasyxiv.com/lodestone/character/3244798/'
-              },
-              'Lodestone ',
-              React.createElement('i', {
-                className: 'fa fa-external-link'
-              })
+              'li',
+              null,
+              React.createElement(
+                'a',
+                {
+                  className: 'share lodestone',
+                  href: 'http://jp.finalfantasyxiv.com/lodestone/character/3244798/'
+                },
+                'Lodestone ',
+                React.createElement('i', {
+                  className: 'fa fa-external-link'
+                })
+              )
             )
           )
         )
