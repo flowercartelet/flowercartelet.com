@@ -216,12 +216,6 @@
         return this.props.onClick(event);
       }
     },
-    componentDidMount: function() {
-      var target = this.refs.createdAt;
-      var createdAt = target.getAttribute('dateTime');
-      var label = moment(createdAt).fromNow();
-      target.textContent = label;
-    },
     componentWillReceiveProps: function(nextProps) {
       var target = getRoot();
       if (!this.props.enabled && nextProps.enabled) {
@@ -254,10 +248,16 @@
                 backgroundImage: 'url("' + this.getImageUri() + '")'
               }
             },
-            React.createElement('time', {
-              dateTime: screenshot.createdAt,
-              ref: 'createdAt'
-            }, screenshot.createdAt)
+            React.createElement(
+              'time',
+              {
+                dateTime: screenshot.createdAt,
+              },
+              React.createElement('i', {
+                className: 'fa fa-clock-o'
+              }),
+              ' ' + moment(screenshot.createdAt).fromNow()
+            )
           )
         )
       );
