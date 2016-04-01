@@ -8,12 +8,6 @@
     return root;
   }
 
-  function getAbsoluteUri(uri) {
-    var anchor = document.createElement('a');
-    anchor.href = uri;
-    return anchor.href;
-  }
-
   function parseJson(response) {
     return response.json();
   }
@@ -175,7 +169,6 @@
         React.createElement('div', {
           className: 'screenshots'
         }, this.state.screenshots.map(function(screenshot) {
-          screenshot.images.original.uri = getAbsoluteUri(screenshot.images.original.uri);
           return React.createElement(ScreenshotComponent, {
             enabled: this.state.currentUri === screenshot.images.original.uri,
             key: screenshot.images.original.uri,
