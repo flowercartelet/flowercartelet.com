@@ -175,7 +175,7 @@ section h2 {
   width: 100%;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   .screenshots {
     padding-left: .5em;
     padding-right: .5em;
@@ -201,13 +201,13 @@ section h2 {
   min-width: 100%;
 }
 
-@media(min-width: 350px) {
+@media (min-width: 350px) {
   .screenshot {
     height: 250px;
   }
 }
 
-@media(min-width: 500px) {
+@media (min-width: 500px) {
   .screenshot {
     flex-basis: 50%;
     height: 300px;
@@ -215,7 +215,7 @@ section h2 {
   }
 }
 
-@media(min-width: 1000px) {
+@media (min-width: 1000px) {
   .screenshot {
     flex-basis: 33%;
     height: 200px;
