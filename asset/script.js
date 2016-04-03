@@ -51,9 +51,53 @@
           },
           'FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っている',
           React.createElement(
-            'em',
+            'ruby',
             null,
-            'Lily Cartelet'
+            React.createElement(
+              'em',
+              null,
+              'Lily'
+            ),
+            React.createElement(
+              'rp',
+              null,
+              '('
+            ),
+            React.createElement(
+              'rt',
+              null,
+              'りりぃ'
+            ),
+            React.createElement(
+              'rp',
+              null,
+              ')'
+            )
+          ),
+          ' ',
+          React.createElement(
+            'ruby',
+            null,
+            React.createElement(
+              'em',
+              null,
+              'Cartelet'
+            ),
+            React.createElement(
+              'rp',
+              null,
+              '('
+            ),
+            React.createElement(
+              'rt',
+              null,
+              'かーたれっと'
+            ),
+            React.createElement(
+              'rp',
+              null,
+              ')'
+            )
           ),
           'のウェブサイトです。FINAL FANTASY XIVの個人的なスクリーンショットを置くための場所です。'
         ), React.createElement(
