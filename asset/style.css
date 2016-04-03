@@ -11,16 +11,21 @@ html.overlay-enabled {
 }
 
 body {
-  color: #333;
-  background-attachment: fixed;
   background-color: #666;
-  background-image: url("/image/hero.jpeg");
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: #333;
   margin: 0;
   min-height: 100%;
   padding: 0;
+}
+
+@media (orientation: landscape) {
+  body {
+    background-attachment: fixed;
+    background-image: url("/image/hero.jpeg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 a {
@@ -34,11 +39,16 @@ em {
 
 .ApplicationComponent > header {
   background-color: #666;
-  background-color: rgba(102, 102, 102, .8);
   color: #ddd;
   margin: 0;
   padding: .5em 0 2em 1em;
   position: relative;
+}
+
+@media (orientation: landscape) {
+  .ApplicationComponent > header {
+    background-color: rgba(102, 102, 102, .8);
+  }
 }
 
 .ApplicationComponent > header h1 {
@@ -103,8 +113,13 @@ em {
 
 .ApplicationComponent > footer {
   background-color: #ddd;
-  background-color: rgba(211, 211, 211, .8);
   color: #333;
+}
+
+@media (orientation: landscape) {
+  .ApplicationComponent > footer {
+    background-color: rgba(211, 211, 211, .8);
+  }
 }
 
 .ApplicationComponent > footer .copyright {
@@ -116,25 +131,35 @@ em {
 
 main {
   background-color: #fff;
-  background-color: rgba(255, 255, 255, .9);
   min-height: 100vh;
   margin: 0;
   padding: 1em 0 0 0;
 }
 
+@media (orientation: landscape) {
+  main {
+    background-color: rgba(255, 255, 255, .9);
+  }
+}
+
 section h2 {
-  background-attachment: fixed;
   background-color: #666;
-  background-image: url("/image/hero.jpeg");
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
   color: #ddd;
   font-size: 1.5em;
   font-weight: bold;
   margin: 0 0 .5em 0;
   padding: .2em;
   text-align: center;
+}
+
+@media (orientation: landscape) {
+  section h2 {
+    background-attachment: fixed;
+    background-image: url("/image/hero.jpeg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 .screenshots {
