@@ -10,7 +10,6 @@ export default class ApplicationComponent extends React.Component {
     const root = getRoot();
     const locale = root.lang || 'en';
     moment.locale(locale);
-    window.moment = moment;
   }
 
   render() {
