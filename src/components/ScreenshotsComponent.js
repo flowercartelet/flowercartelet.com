@@ -28,14 +28,9 @@ export default class ScreenshotsComponent extends React.Component {
     );
   }
 
-  handleClickScreenshot(event) {
-    let target = event.target;
-    let count = 0;
-    while (target.tagName.toLowerCase() !== 'a' && count < 10) {
-      target = target && target.parentNode;
-      ++count;
-    }
-    const uri = target.href;
+  handleClickShowScreenshot(event) {
+    const anchor = event.currentTarget;
+    const uri = anchor.href;
     if (typeof uri === 'undefined') {
       return true;
     }
@@ -46,20 +41,76 @@ export default class ScreenshotsComponent extends React.Component {
     return false;
   }
 
+  handleClickShowPreviousScreenshot(event) {
+    event.preventDefault();
+    this.setState({
+      currentUri: this.getSiblingScreenshotUri(-1)
+    });
+    return false;
+  }
+
+  handleClickShowNextScreenshot(event) {
+    event.preventDefault();
+    this.setState({
+      currentUri: this.getSiblingScreenshotUri(1)
+    });
+    return false;
+  }
+
+  getSiblingScreenshotUri(count = 1) {
+    const uri = this.state.currentUri;
+    if (typeof uri === 'undefined') {
+      return null;
+    }
+    const screenshots = this.state.screenshots;
+    const screenshotUris = screenshots.map((screenshot) =>
+      screenshot.images.original.uri);
+    const index = screenshotUris.indexOf(uri);
+    if (index < 0) {
+      return null;
+    }
+    const siblingScreenshotUri = screenshotUris[index + count];
+    if (
+      typeof siblingScreenshotUri === 'undefined' ||
+      this.state.currentUri === siblingScreenshotUri
+    ) {
+      return null;
+    }
+    return siblingScreenshotUri;
+  }
+
   render() {
     return (
-      <section>
+      <section id='recently-screenshots'>
         <h2>スクリーンショット</h2>
         <div className='screenshots'>
           {this.state.screenshots.map((screenshot) => (
             <ScreenshotComponent
               enabled={this.state.currentUri === screenshot.images.original.uri}
               key={screenshot.images.original.uri}
-              onClick={::this.handleClickScreenshot}
+              onClick={::this.handleClickShowScreenshot}
               screenshot={screenshot}
             />
           ))}
         </div>
+        <nav className={this.state.currentUri ? 'visible' : ''}>
+          <ul>
+            <li className='prev'>
+              <button
+                onClick={::this.handleClickShowPreviousScreenshot}
+              >
+                prev
+              </button>
+            </li>
+            <li className='next'>
+              <button
+                onClick={::this.handleClickShowNextScreenshot}
+              >
+                next
+              </button>
+            </li>
+          </ul>
+        </nav>
       </section>
     );
   }
