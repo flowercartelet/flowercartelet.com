@@ -19,6 +19,11 @@ export default class ScreenshotComponent extends React.Component {
     })
   };
 
+  constructor(...args) {
+    super(...args);
+    this.handleClick = ::this.handleClick;
+  }
+
   componentWillReceiveProps(nextProps) {
     var root = getRoot();
     if (!this.props.enabled && nextProps.enabled) {
@@ -50,7 +55,7 @@ export default class ScreenshotComponent extends React.Component {
     const images = screenshot.images;
     return (
       <div className={`${this.props.enabled ? 'enabled ' : ''}screenshot`}>
-        <a href={images.original.uri} onClick={::this.handleClick}>
+        <a href={images.original.uri} onClick={this.handleClick}>
           <div
             className='image'
             style={{ backgroundImage: `url(${this.getImageUri()})` }}
