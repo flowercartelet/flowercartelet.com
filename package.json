@@ -3,6 +3,7 @@
   "dependencies": {
     "babel-polyfill": "^6.7.4",
     "lodash.isequal": "^4.1.3",
+    "lodash.snakecase": "^4.0.0",
     "moment": "^2.12.0",
     "react": "^15.0.0-rc.2",
     "react-dom": "^15.0.0-rc.2",
@@ -26,7 +27,10 @@
   "name": "flowercartelet.github.io",
   "private": true,
   "scripts": {
-    "build": "rollup -c"
+    "build": "npm run build:script && npm run build:manifest && npm run build:index",
+    "build:index": "node -e \"require('rollup').rollup({entry:'./src/renderer.js',format:'umd',plugins:[require('rollup-plugin-node-resolve')({browser:true,jsnext:true,main:true}),require('rollup-plugin-commonjs')(),require('rollup-plugin-babel')(),require('rollup-plugin-replace')({'process.env.NODE_ENV':JSON.stringify('production')})]}).then(function(bundle){console.log(bundle.generate({format:'cjs'}).code)})\" | node > index.html",
+    "build:manifest": "echo \"export default {\\\"script.js\\\":\\\"/asset/script.js?$(cat asset/script.js | openssl dgst -sha512)\\\",\\\"style.css\\\":\\\"/asset/style.css?$(cat asset/style.css | openssl dgst -sha512)\\\"};\" > asset/manifest.js",
+    "build:script": "rollup -c"
   },
   "version": "1.0.0"
 }
