@@ -10,6 +10,15 @@ export default class ScreenshotsComponent extends React.Component {
     screenshots: []
   };
 
+  constructor(...args) {
+    super(...args);
+    this.handleClickShowNextScreenshot = ::this.handleClickShowNextScreenshot;
+    this.handleClickShowPreviousScreenshot =
+      ::this.handleClickShowPreviousScreenshot;
+    this.handleClickShowScreenshot = ::this.handleClickShowScreenshot;
+
+  }
+
   componentDidMount() {
     const root = getRoot();
     const screenshotListUri = root.dataset.screenshotListUri;
@@ -28,15 +37,10 @@ export default class ScreenshotsComponent extends React.Component {
     );
   }
 
-  handleClickShowScreenshot(event) {
-    const anchor = event.currentTarget;
-    const uri = anchor.href;
-    if (typeof uri === 'undefined') {
-      return true;
-    }
+  handleClickShowNextScreenshot(event) {
     event.preventDefault();
     this.setState({
-      currentUri: this.state.currentUri === uri ? null : uri
+      currentUri: this.getSiblingScreenshotUri(1)
     });
     return false;
   }
@@ -49,10 +53,15 @@ export default class ScreenshotsComponent extends React.Component {
     return false;
   }
 
-  handleClickShowNextScreenshot(event) {
+  handleClickShowScreenshot(event) {
+    const anchor = event.currentTarget;
+    const uri = anchor.href;
+    if (typeof uri === 'undefined') {
+      return true;
+    }
     event.preventDefault();
     this.setState({
-      currentUri: this.getSiblingScreenshotUri(1)
+      currentUri: this.state.currentUri === uri ? null : uri
     });
     return false;
   }
@@ -88,7 +97,7 @@ export default class ScreenshotsComponent extends React.Component {
             <ScreenshotComponent
               enabled={this.state.currentUri === screenshot.images.original.uri}
               key={screenshot.images.original.uri}
-              onClick={::this.handleClickShowScreenshot}
+              onClick={this.handleClickShowScreenshot}
               screenshot={screenshot}
             />
           ))}
@@ -97,14 +106,14 @@ export default class ScreenshotsComponent extends React.Component {
           <ul>
             <li className='prev'>
               <button
-                onClick={::this.handleClickShowPreviousScreenshot}
+                onClick={this.handleClickShowPreviousScreenshot}
               >
                 prev
               </button>
             </li>
             <li className='next'>
               <button
-                onClick={::this.handleClickShowNextScreenshot}
+                onClick={this.handleClickShowNextScreenshot}
               >
                 next
               </button>
