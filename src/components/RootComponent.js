@@ -107,7 +107,7 @@ export default class RootComponent extends React.Component {
         </head>
         <body>
           <div id='app'/>
-          <script src={manifest['script.js']}/>
+          <script async={true} src={manifest['script.js']}/>
         </body>
       </html>
     );
