@@ -41,6 +41,7 @@ export default class RootComponent extends React.Component {
     }),
     keywords: React.PropTypes.arrayOf(React.PropTypes.string),
     locale: React.PropTypes.string.isRequired,
+    markup: React.PropTypes.string,
     screenshotListUri: React.PropTypes.string.isRequired,
     shortDescription: React.PropTypes.string
   };
@@ -106,7 +107,7 @@ export default class RootComponent extends React.Component {
           <GoogleAnalyticsTrackingCodeComponent/>
         </head>
         <body>
-          <div id='app'/>
+          <div id='app' dangerouslySetInnerHTML={{ __html: this.props.markup }}/>
           <script async={true} src={manifest['script.js']}/>
         </body>
       </html>
