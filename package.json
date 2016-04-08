@@ -11,6 +11,7 @@
   },
   "description": "かーたんのほーむぺーじ",
   "devDependencies": {
+    "babel-cli": "^6.7.5",
     "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-function-bind": "^6.5.2",
     "babel-preset-es2015-rollup": "^1.1.1",
@@ -28,7 +29,7 @@
   "private": true,
   "scripts": {
     "build": "npm run build:script && npm run build:manifest && npm run build:index",
-    "build:index": "node -e \"require('rollup').rollup({entry:'./src/renderer.js',format:'umd',plugins:[require('rollup-plugin-node-resolve')({browser:true,jsnext:true,main:true}),require('rollup-plugin-commonjs')(),require('rollup-plugin-babel')(),require('rollup-plugin-replace')({'process.env.NODE_ENV':JSON.stringify('production')})]}).then(function(bundle){console.log(bundle.generate({format:'cjs'}).code)})\" | node > index.html",
+    "build:index": "babel-node ./src/renderer.js > index.html",
     "build:manifest": "echo \"export default {\\\"script.js\\\":\\\"/asset/script.js?$(cat asset/script.js | openssl dgst -sha512)\\\",\\\"style.css\\\":\\\"/asset/style.css?$(cat asset/style.css | openssl dgst -sha512)\\\"};\" > asset/manifest.js",
     "build:script": "rollup -c"
   },
