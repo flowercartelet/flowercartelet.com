@@ -232,14 +232,12 @@ section h2 {
   flex-shrink: 0;
   height: 200px;
   margin: 0;
-  opacity: .8;
   padding: 0;
   position: relative;
   transition:
     flex-basis .5s ease 0s,
     height .5s ease 0s,
-    min-width .5s ease 0s,
-    opacity .5s ease 0s;
+    min-width .5s ease 0s;
   min-width: 100%;
 }
 
@@ -263,11 +261,6 @@ section h2 {
     height: 200px;
     min-width: 33%;
   }
-}
-
-.screenshot.enabled,
-.screenshot:hover {
-  opacity: 1;
 }
 
 .screenshot a {
