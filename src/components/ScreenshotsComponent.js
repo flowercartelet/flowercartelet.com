@@ -5,6 +5,8 @@ import getRoot from '../utils/getRoot';
 import parseJson from '../utils/parseJson';
 
 export default class ScreenshotsComponent extends React.Component {
+  static displayName = 'ScreenshotsComponent';
+
   state = {
     currentUri: null,
     screenshots: []

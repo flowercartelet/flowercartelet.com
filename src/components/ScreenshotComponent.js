@@ -6,6 +6,7 @@ export default class ScreenshotComponent extends React.Component {
   static defaultProps = {
     enabled: false
   };
+  static displayName = 'ScreenshotComponent';
   static propTypes = {
     enabled: React.PropTypes.bool.isRequired,
     onClick: React.PropTypes.func,

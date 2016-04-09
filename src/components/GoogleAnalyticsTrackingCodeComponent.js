@@ -1,6 +1,8 @@
 import React from 'react';
 
 export default class GoogleAnalyticsTrackingCodeComponent extends React.Component {
+  static displayName = 'GoogleAnalyticsTrackingCodeComponent';
+
   render() {
     return (
       <script dangerouslySetInnerHTML={{ __html: [

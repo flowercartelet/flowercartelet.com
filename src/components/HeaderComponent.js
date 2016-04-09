@@ -2,6 +2,8 @@ import isEqual from 'lodash.isequal';
 import React from 'react';
 
 export default class HeaderComponent extends React.Component {
+  static displayName = 'HeaderComponent';
+
   shouldComponentUpdate(nextProps, nextState) {
     return !isEqual(this.props, nextProps) || !isEqual(this.state, nextState);
   }
