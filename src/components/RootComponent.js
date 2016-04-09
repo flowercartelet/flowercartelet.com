@@ -24,6 +24,7 @@ export default class RootComponent extends React.Component {
     screenshotListUri: 'https://screenshot.flowercartelet.com/index.json',
     shortDescription: 'FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っているLily Carteletのウェブサイトです。'
   };
+  static displayName = 'RootComponent';
   static propTypes = {
     author: React.PropTypes.shape({
       email: React.PropTypes.string.isRequired,
