@@ -1,7 +1,6 @@
 import React from 'react';
 import snakeCase from 'lodash.snakecase';
 import GoogleAnalyticsTrackingCodeComponent from './GoogleAnalyticsTrackingCodeComponent';
-import manifest from '../../asset/manifest';
 
 export default class RootComponent extends React.Component {
   static defaultProps = {
@@ -21,6 +20,7 @@ export default class RootComponent extends React.Component {
     },
     keywords: ['Lily Cartelet', 'FINAL FANTASY XIV', 'FF14', 'Fenrir'],
     locale: 'ja-jp',
+    manifest: {},
     screenshotListUri: 'https://screenshot.flowercartelet.com/index.json',
     shortDescription: 'FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っているLily Carteletのウェブサイトです。'
   };
@@ -43,6 +43,7 @@ export default class RootComponent extends React.Component {
     keywords: React.PropTypes.arrayOf(React.PropTypes.string),
     locale: React.PropTypes.string.isRequired,
     markup: React.PropTypes.string,
+    manifest: React.PropTypes.object.isRequired,
     screenshotListUri: React.PropTypes.string.isRequired,
     shortDescription: React.PropTypes.string
   };
@@ -95,7 +96,7 @@ export default class RootComponent extends React.Component {
           <meta content={this.props.currentUri} property='og:url'/>
           <link href={`mailto:${this.props.author.email}`} rel='author'/>
           <link href={this.props.currentUri} rel='canonical'/>
-          <link href={manifest['style.css']} rel='stylesheet'/>
+          <link href={this.props.manifest['style.css']} rel='stylesheet'/>
           <link href='/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
           <title>
             {this.props.currentTitle}
@@ -109,7 +110,7 @@ export default class RootComponent extends React.Component {
         </head>
         <body>
           <div id='app' dangerouslySetInnerHTML={{ __html: this.props.markup }}/>
-          <script async={true} src={manifest['script.js']}/>
+          <script async={true} src={this.props.manifest['script.js']}/>
         </body>
       </html>
     );
