@@ -1,4 +1,4 @@
-import moment from 'moment/min/moment-with-locales';
+import moment from 'moment';
 import React from 'react';
 import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
