@@ -1,10 +1,10 @@
 import isEqual from 'lodash.isequal';
-import React from 'react';
+import React, { Component } from 'react';
 import ScreenshotComponent from './ScreenshotComponent';
 import getRoot from '../utils/getRoot';
 import parseJson from '../utils/parseJson';
 
-export default class ScreenshotsComponent extends React.Component {
+export default class ScreenshotsComponent extends Component {
   static displayName = 'ScreenshotsComponent';
 
   state = {

@@ -1,11 +1,11 @@
 import moment from 'moment';
-import React from 'react';
+import React, { Component } from 'react';
 import HeaderComponent from './HeaderComponent';
 import FooterComponent from './FooterComponent';
 import ScreenshotsComponent from './ScreenshotsComponent';
 import getRoot from '../utils/getRoot';
 
-export default class ApplicationComponent extends React.Component {
+export default class ApplicationComponent extends Component {
   static displayName = 'ApplicationComponent';
 
   componentDidMount() {

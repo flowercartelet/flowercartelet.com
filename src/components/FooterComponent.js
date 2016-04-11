@@ -1,7 +1,7 @@
 import isEqual from 'lodash.isequal';
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class FooterComponent extends React.Component {
+export default class FooterComponent extends Component {
   static displayName = 'FooterComponent';
 
   shouldComponentUpdate(nextProps, nextState) {

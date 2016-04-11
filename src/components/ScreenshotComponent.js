@@ -1,21 +1,21 @@
 import moment from 'moment';
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import getRoot from '../utils/getRoot';
 
-export default class ScreenshotComponent extends React.Component {
+export default class ScreenshotComponent extends Component {
   static defaultProps = {
     enabled: false
   };
   static displayName = 'ScreenshotComponent';
   static propTypes = {
-    enabled: React.PropTypes.bool.isRequired,
-    onClick: React.PropTypes.func,
-    screenshot: React.PropTypes.shape({
-      createdAt: React.PropTypes.string,
-      images: React.PropTypes.objectOf(React.PropTypes.shape({
-        height: React.PropTypes.number,
-        uri: React.PropTypes.string.isRequired,
-        width: React.PropTypes.number
+    enabled: PropTypes.bool.isRequired,
+    onClick: PropTypes.func,
+    screenshot: PropTypes.shape({
+      createdAt: PropTypes.string,
+      images: PropTypes.objectOf(React.PropTypes.shape({
+        height: PropTypes.number,
+        uri: PropTypes.string.isRequired,
+        width: PropTypes.number
       }))
     })
   };
