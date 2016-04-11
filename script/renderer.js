@@ -5,7 +5,8 @@ import isEqual from 'lodash.isequal';
 import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import ApplicationComponent from '../src/components/ApplicationComponent';
+import { match, RouterContext } from 'react-router';
+import routes from '../src/routes';
 import RootComponent from '../src/components/RootComponent';
 
 function getHash(filePath) {
@@ -82,32 +83,35 @@ function getManifest(directory) {
   });
 }
 
-function writeHtml(filePath, { manifest, markup }) {
+function writeHtml(location, filePath, { manifest }) {
   return new Promise(function(resolve, reject) {
-    const html = ReactDOM.renderToStaticMarkup(
-      <RootComponent manifest={manifest} markup={markup}/>
-    );
-    const body = `<!DOCTYPE html>\n${html}`;
-    fs.writeFile(filePath, body, function(error) {
+    match({ location, routes }, function(error, redirectLocation, renderProps) {
       if (error instanceof Error) {
         return reject(error);
       }
-      return resolve(body);
+      const markup = ReactDOM.renderToString(
+        <RouterContext {...renderProps}/>
+      );
+      const html = ReactDOM.renderToStaticMarkup(
+        <RootComponent {...{ manifest, markup }}/>
+      );
+      const body = `<!DOCTYPE html>\n${html}`;
+      fs.writeFile(filePath, body, function(error) {
+        if (error instanceof Error) {
+          return reject(error);
+        }
+        return resolve(body);
+      });
     });
   });
-}
-
-async function writeIndex(directory, props) {
-  const filePath = path.join(directory, 'index.html');
-  props.markup = ReactDOM.renderToString(<ApplicationComponent/>);
-  await writeHtml(filePath, props);
 }
 
 async function main() {
   const directory = path.join(__dirname, '..');
   const manifest = await getManifest(directory);
   await Promise.all([
-    writeIndex(directory, { manifest })
+    writeHtml('/', path.join(directory, 'index.html'), { manifest }),
+    writeHtml('/404.html', path.join(directory, '404.html'), { manifest })
   ]);
 }
 

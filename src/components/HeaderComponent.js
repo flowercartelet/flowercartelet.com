@@ -1,5 +1,6 @@
 import isEqual from 'lodash.isequal';
 import React, { Component } from 'react';
+import { IndexLink } from 'react-router';
 
 export default class HeaderComponent extends Component {
   static displayName = 'HeaderComponent';
@@ -19,7 +20,9 @@ export default class HeaderComponent extends Component {
   render() {
     return (
       <header>
-        <h1>かーたんのほーむぺーじ</h1>
+        <h1>
+          <IndexLink to={{ name: 'home' }}>かーたんのほーむぺーじ</IndexLink>
+        </h1>
         <p className='description'>
           FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っている
           <ruby>

@@ -19,7 +19,7 @@ export default class ApplicationComponent extends Component {
       <div className='ApplicationComponent'>
         <HeaderComponent/>
         <main>
-          <ScreenshotsComponent/>
+          {this.props.children}
         </main>
         <FooterComponent/>
       </div>
