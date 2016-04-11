@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import snakeCase from 'lodash.snakecase';
 import GoogleAnalyticsTrackingCodeComponent from './GoogleAnalyticsTrackingCodeComponent';
 
-export default class RootComponent extends React.Component {
+export default class RootComponent extends Component {
   static defaultProps = {
     author: {
       email: 'flowercartelet@gmail.com',
@@ -26,26 +26,26 @@ export default class RootComponent extends React.Component {
   };
   static displayName = 'RootComponent';
   static propTypes = {
-    author: React.PropTypes.shape({
-      email: React.PropTypes.string.isRequired,
-      name: React.PropTypes.string.isRequired,
-      twitterScreenName: React.PropTypes.string
+    author: PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      twitterScreenName: PropTypes.string
     }),
-    currentTitle: React.PropTypes.string.isRequired,
-    currentUri: React.PropTypes.string.isRequired,
-    description: React.PropTypes.string,
-    image: React.PropTypes.shape({
-      height: React.PropTypes.number,
-      type: React.PropTypes.string,
-      uri: React.PropTypes.string,
-      width: React.PropTypes.number
+    currentTitle: PropTypes.string.isRequired,
+    currentUri: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    image: PropTypes.shape({
+      height: PropTypes.number,
+      type: PropTypes.string,
+      uri: PropTypes.string,
+      width: PropTypes.number
     }),
-    keywords: React.PropTypes.arrayOf(React.PropTypes.string),
-    locale: React.PropTypes.string.isRequired,
-    markup: React.PropTypes.string,
-    manifest: React.PropTypes.object.isRequired,
-    screenshotListUri: React.PropTypes.string.isRequired,
-    shortDescription: React.PropTypes.string
+    keywords: PropTypes.arrayOf(PropTypes.string),
+    locale: PropTypes.string.isRequired,
+    markup: PropTypes.string,
+    manifest: PropTypes.object.isRequired,
+    screenshotListUri: PropTypes.string.isRequired,
+    shortDescription: PropTypes.string
   };
 
   getViewPort() {

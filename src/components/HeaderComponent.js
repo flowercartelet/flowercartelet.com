@@ -1,7 +1,7 @@
 import isEqual from 'lodash.isequal';
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class HeaderComponent extends React.Component {
+export default class HeaderComponent extends Component {
   static displayName = 'HeaderComponent';
 
   shouldComponentUpdate(nextProps, nextState) {
