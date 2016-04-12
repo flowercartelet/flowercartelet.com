@@ -2,11 +2,12 @@
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "dependencies": {
     "core-js": "^2.2.2",
+    "intl": "^1.1.0",
     "lodash.isequal": "^4.1.4",
     "lodash.snakecase": "^4.0.0",
-    "moment": "^2.12.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
+    "react-intl": "^2.0.1",
     "react-router": "^2.1.0",
     "whatwg-fetch": "^0.11.0"
   },

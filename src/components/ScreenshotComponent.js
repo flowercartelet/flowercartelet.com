@@ -1,5 +1,5 @@
-import moment from 'moment';
 import React, { Component, PropTypes } from 'react';
+import { FormattedRelative } from 'react-intl';
 import getRoot from '../utils/getRoot';
 
 export default class ScreenshotComponent extends Component {
@@ -63,7 +63,8 @@ export default class ScreenshotComponent extends Component {
           />
           <time dateTime={screenshot.createdAt}>
             <i className='fa fa-clock-o'/>
-            {` ${moment(screenshot.createdAt).fromNow()}`}
+            &nbsp;
+            <FormattedRelative value={screenshot.createdAt}/>
           </time>
         </a>
       </div>

@@ -1,8 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import { intlShape } from 'react-intl';
 import snakeCase from 'lodash.snakecase';
 import GoogleAnalyticsTrackingCodeComponent from './GoogleAnalyticsTrackingCodeComponent';
 
 export default class RootComponent extends Component {
+  static contextTypes = {
+    intl: intlShape
+  };
   static defaultProps = {
     author: {
       email: 'flowercartelet@gmail.com',
@@ -19,7 +23,6 @@ export default class RootComponent extends Component {
       width: 1280
     },
     keywords: ['Lily Cartelet', 'FINAL FANTASY XIV', 'FF14', 'Fenrir'],
-    locale: 'ja-jp',
     manifest: {},
     screenshotListUri: 'https://screenshot.flowercartelet.com/index.json',
     shortDescription: 'FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っているLily Carteletのウェブサイトです。'
@@ -41,7 +44,6 @@ export default class RootComponent extends Component {
       width: PropTypes.number
     }),
     keywords: PropTypes.arrayOf(PropTypes.string),
-    locale: PropTypes.string.isRequired,
     markup: PropTypes.string,
     manifest: PropTypes.object.isRequired,
     screenshotListUri: PropTypes.string.isRequired,
@@ -59,8 +61,9 @@ export default class RootComponent extends Component {
   }
 
   render() {
+    const { locale } = this.context.intl;
     return (
-      <html data-screenshot-list-uri={this.props.screenshotListUri} lang={this.props.locale}>
+      <html data-screenshot-list-uri={this.props.screenshotListUri} lang={locale}>
         <head prefix='og: http://ogp.me/ns#'>
           <meta charSet='UTF-8'/>
           <meta content={this.props.author.name} name='author'/>
@@ -90,7 +93,7 @@ export default class RootComponent extends Component {
             <meta content={this.props.image.height} property='og:image:height'/>}
           {this.props.image && this.props.image.width &&
             <meta content={this.props.image.width} property='og:image:width'/>}
-          <meta content={snakeCase(this.props.locale)} property='og:locale'/>
+          <meta content={snakeCase(locale)} property='og:locale'/>
           <meta content={this.props.currentTitle} property='og:title'/>
           <meta content='website' property='og:type'/>
           <meta content={this.props.currentUri} property='og:url'/>

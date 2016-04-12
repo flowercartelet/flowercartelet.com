@@ -5,9 +5,13 @@ import isEqual from 'lodash.isequal';
 import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
+import ReactIntl, { IntlProvider } from 'react-intl';
+import jaLocaleData from 'react-intl/locale-data/ja';
 import { match, RouterContext } from 'react-router';
 import routes from '../src/routes';
 import RootComponent from '../src/components/RootComponent';
+
+ReactIntl.addLocaleData(jaLocaleData);
 
 function getHash(filePath) {
   return new Promise(function(resolve, reject) {
@@ -90,7 +94,9 @@ function writeHtml(location, filePath, { manifest }) {
         return reject(error);
       }
       const markup = ReactDOM.renderToString(
-        <RouterContext {...renderProps}/>
+        <IntlProvider locale='ja-jp'>
+          <RouterContext {...renderProps}/>
+        </IntlProvider>
       );
       const html = ReactDOM.renderToStaticMarkup(
         <RootComponent {...{ manifest, markup }}/>
