@@ -1,12 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { intlShape } from 'react-intl';
 import snakeCase from 'lodash.snakecase';
 import GoogleAnalyticsTrackingCodeComponent from './GoogleAnalyticsTrackingCodeComponent';
 
 export default class RootComponent extends Component {
-  static contextTypes = {
-    intl: intlShape
-  };
   static defaultProps = {
     author: {
       email: 'flowercartelet@gmail.com',
@@ -44,6 +40,7 @@ export default class RootComponent extends Component {
       width: PropTypes.number
     }),
     keywords: PropTypes.arrayOf(PropTypes.string),
+    locale: React.PropTypes.string,
     markup: PropTypes.string,
     manifest: PropTypes.object.isRequired,
     screenshotListUri: PropTypes.string.isRequired,
@@ -61,7 +58,7 @@ export default class RootComponent extends Component {
   }
 
   render() {
-    const { locale } = this.context.intl;
+    const locale = this.props.locale || 'en';
     return (
       <html data-screenshot-list-uri={this.props.screenshotListUri} lang={locale}>
         <head prefix='og: http://ogp.me/ns#'>
