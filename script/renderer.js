@@ -13,6 +13,8 @@ import RootComponent from '../src/components/RootComponent';
 
 ReactIntl.addLocaleData(jaLocaleData);
 
+const locale = 'ja-jp';
+
 function getHash(filePath) {
   return new Promise(function(resolve, reject) {
     fs.readFile(filePath, function(error, body) {
@@ -94,12 +96,17 @@ function writeHtml(location, filePath, { manifest }) {
         return reject(error);
       }
       const markup = ReactDOM.renderToString(
-        <IntlProvider locale='ja-jp'>
+        <IntlProvider locale={locale}>
           <RouterContext {...renderProps}/>
         </IntlProvider>
       );
+      const rootProps = {
+        locale,
+        manifest,
+        markup
+      }
       const html = ReactDOM.renderToStaticMarkup(
-        <RootComponent {...{ manifest, markup }}/>
+        <RootComponent {...rootProps}/>
       );
       const body = `<!DOCTYPE html>\n${html}`;
       fs.writeFile(filePath, body, function(error) {
