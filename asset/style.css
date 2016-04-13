@@ -273,7 +273,7 @@ section p {
   flex-basis: 100%;
   flex-grow: 0;
   flex-shrink: 0;
-  height: 200px;
+  height: auto;
   margin: 0;
   padding: 0;
   position: relative;
@@ -284,16 +284,15 @@ section p {
   min-width: 100%;
 }
 
-@media (min-width: 350px) {
-  .screenshot {
-    height: 250px;
-  }
+.screenshot::before {
+  content: "";
+  display: block;
+  padding-top: 50%;
 }
 
 @media (min-width: 500px) {
   .screenshot {
     flex-basis: 50%;
-    height: 300px;
     min-width: 50%;
   }
 }
@@ -301,14 +300,18 @@ section p {
 @media (min-width: 1000px) {
   .screenshot {
     flex-basis: 33%;
-    height: 200px;
     min-width: 33%;
   }
 }
 
 .screenshot a {
+  bottom: 0;
   display: block;
   height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 100%;
 }
 
