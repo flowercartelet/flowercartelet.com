@@ -1,3 +1,4 @@
+/*.html -diff
 /asset/manifest.json -diff
 /asset/script.js -diff
 /asset/script.js.map -diff
