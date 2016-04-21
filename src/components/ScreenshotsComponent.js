@@ -18,18 +18,23 @@ export default class ScreenshotsComponent extends Component {
     this.handleClickShowPreviousScreenshot =
       ::this.handleClickShowPreviousScreenshot;
     this.handleClickShowScreenshot = ::this.handleClickShowScreenshot;
-
+    this.handleKeyDown = ::this.handleKeyDown;
   }
 
   componentDidMount() {
     const root = getRoot();
     const screenshotListUri = root.dataset.screenshotListUri;
+    window.addEventListener('keydown', this.handleKeyDown);
     fetch(screenshotListUri).then(parseJson).then((response) => {
       this.setState({
         currentUri: null,
         screenshots: response
       });
     });
+  }
+
+  componentWillMount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -65,6 +70,21 @@ export default class ScreenshotsComponent extends Component {
     this.setState({
       currentUri: this.state.currentUri === uri ? null : uri
     });
+    return false;
+  }
+
+  handleKeyDown(event) {
+    const { keyCode } = event;
+    if (
+      this.state.currentUri === null ||
+      ![27, 37, 39].includes(keyCode)
+    ) {
+      return true;
+    }
+    event.preventDefault();
+    const currentUri = keyCode === 27 ?
+      null : this.getSiblingScreenshotUri(keyCode === 39 ? 1 : -1);
+    this.setState({ currentUri });
     return false;
   }
 
