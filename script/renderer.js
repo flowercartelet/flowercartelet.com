@@ -5,13 +5,10 @@ import isEqual from 'lodash.isequal';
 import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import ReactIntl, { IntlProvider } from 'react-intl';
-import jaLocaleData from 'react-intl/locale-data/ja';
 import { match, RouterContext } from 'react-router';
 import routes from '../src/routes';
+import HtmlComponent from '../src/components/HtmlComponent';
 import RootComponent from '../src/components/RootComponent';
-
-ReactIntl.addLocaleData(jaLocaleData);
 
 const locale = 'ja-jp';
 
@@ -96,17 +93,16 @@ function writeHtml(location, filePath, { manifest }) {
         return reject(error);
       }
       const markup = ReactDOM.renderToString(
-        <IntlProvider locale={locale}>
+        <RootComponent locale={locale}>
           <RouterContext {...renderProps}/>
-        </IntlProvider>
+        </RootComponent>
       );
-      const rootProps = {
-        locale,
-        manifest,
-        markup
-      }
       const html = ReactDOM.renderToStaticMarkup(
-        <RootComponent {...rootProps}/>
+        <HtmlComponent
+          locale={locale}
+          manifest={manifest}
+          markup={markup}
+        />
       );
       const body = `<!DOCTYPE html>\n${html}`;
       fs.writeFile(filePath, body, function(error) {
