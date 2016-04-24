@@ -22,7 +22,7 @@ export default connect(function({ screenshotsReducer }) {
   constructor(...args) {
     super(...args);
     this.handleClickImage = ::this.handleClickImage;
-    this.handleClickNextButtn = ::this.handleClickNextButton;
+    this.handleClickNextButton = ::this.handleClickNextButton;
     this.handleClickPreviousButton = ::this.handleClickPreviousButton;
     this.handleKeyDown = ::this.handleKeyDown;
   }
@@ -66,7 +66,7 @@ export default connect(function({ screenshotsReducer }) {
 
   handleClickPreviousButton(event) {
     event.preventDefault();
-    const screenshot = this.getSiblingScreenshot(-1)
+    const screenshot = this.getSiblingScreenshot(-1);
     this.props.dispatch(setCurrentScreenshotAction(screenshot));
     return false;
   }
@@ -120,7 +120,7 @@ export default connect(function({ screenshotsReducer }) {
             </li>
             <li className='next'>
               <button
-                onClick={this.handleClickNextButtot}
+                onClick={this.handleClickNextButton}
               >
                 next
               </button>
