@@ -205,48 +205,6 @@ section p {
   padding: 0;
 }
 
-#recently-screenshots > nav {
-  display: none;
-}
-
-#recently-screenshots > nav.visible {
-  display: block;
-}
-
-#recently-screenshots > nav .prev,
-#recently-screenshots > nav .next {
-  bottom: 0;
-  display: block;
-  padding: 0;
-  position: fixed;
-  margin: 0;
-  top: 0;
-  width: 15%;
-  z-index: 1002;
-}
-
-#recently-screenshots > nav .prev {
-  left: 0;
-}
-
-#recently-screenshots > nav .next {
-  right: 0;
-}
-
-#recently-screenshots > nav .prev button,
-#recently-screenshots > nav .next button {
-  background-color: transparent;
-  border: 0;
-  color: transparent;
-  height: 100%;
-  width: 100%;
-}
-
-#recently-screenshots > nav .prev button:focus,
-#recently-screenshots > nav .next button:focus {
-  outline: 0;
-}
-
 .screenshots {
   box-sizing: border-box;
   display: flex;
@@ -275,6 +233,7 @@ section p {
   flex-shrink: 0;
   height: auto;
   margin: 0;
+  overflow: hidden;
   padding: 0;
   position: relative;
   transition:
@@ -299,45 +258,22 @@ section p {
 
 @media (min-width: 1000px) {
   .screenshot {
-    flex-basis: 33%;
-    min-width: 33%;
+    flex-basis: 33.333%;
+    flex-basis: calc(100% / 3);
+    min-width: 33.333%;
+    min-width: calc(100% / 3);
   }
 }
 
-.screenshot a {
+.screenshot img {
   bottom: 0;
   display: block;
   height: 100%;
-  left: 0;
+  left: 50%;
   position: absolute;
-  right: 0;
   top: 0;
-  width: 100%;
-}
-
-.screenshot.enabled a {
-  background-color: #000;
-  background-color: rgba(0, 0, 0, .8);
-  bottom: 0;
-  left: 0;
-  overflow-y: scroll;
-  right: 0;
-  position: fixed;
-  top: 0;
-  z-index: 1001;
-}
-
-.screenshot .image {
-  background-color: transparent;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.screenshot.enabled .image {
-  background-size: contain;
+  transform: translate(-50%, 0);
+  width: auto;
 }
 
 .screenshot time {
@@ -356,7 +292,87 @@ section p {
   transition: opacity .25s ease 0s;
 }
 
-.screenshot:hover time,
-.screenshot.enabled time {
+.screenshot:hover time {
   opacity: 0;
+}
+
+.pickup-screenshot {
+  display: none;
+}
+
+.pickup-screenshot.visible {
+  display: block;
+}
+
+.pickup-screenshot .image {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1002;
+}
+
+.pickup-screenshot .image img {
+  height: auto;
+  left: 50%;
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+}
+
+.pickup-screenshot nav .prev,
+.pickup-screenshot nav .next {
+  bottom: 0;
+  display: block;
+  padding: 0;
+  position: fixed;
+  margin: 0;
+  top: 0;
+  width: 15%;
+  z-index: 1003;
+}
+
+.pickup-screenshot nav .prev {
+  left: 0;
+}
+
+.pickup-screenshot nav .next {
+  right: 0;
+}
+
+.pickup-screenshot nav .prev button,
+.pickup-screenshot nav .next button {
+  background-color: transparent;
+  border: 0;
+  color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
+.pickup-screenshot nav .prev button:focus,
+.pickup-screenshot nav .next button:focus {
+  outline: 0;
+}
+
+.backdrop {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, .8);
+  bottom: 0;
+  display: none;
+  left: 0;
+  overflow-y: scroll;
+  right: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+}
+
+.backdrop.visible {
+  display: block;
 }

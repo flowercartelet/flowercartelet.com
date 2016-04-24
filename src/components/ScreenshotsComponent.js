@@ -1,113 +1,42 @@
 import isEqual from 'lodash.isequal';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import PickupScreenshotComponent from './PickupScreenshotComponent';
 import ScreenshotComponent from './ScreenshotComponent';
+import fetchScreenshotsAction from '../actions/fetchScreenshotsAction';
+import screenshotShape from '../types/screenshotShape';
 import getRoot from '../utils/getRoot';
-import parseJson from '../utils/parseJson';
 
-export default class ScreenshotsComponent extends Component {
-  static displayName = 'ScreenshotsComponent';
-
-  state = {
-    currentUri: null,
+export default connect(function({ screenshotsReducer }) {
+  const { currentScreenshot, screenshots } = screenshotsReducer;
+  return { currentScreenshot, screenshots };
+})(class ScreenshotsComponent extends Component {
+  static defaultProps = {
+    currentScreenshot: null,
     screenshots: []
+  };
+  static displayName = 'ScreenshotsComponent';
+  static propTypes = {
+    currentScreenshot: screenshotShape,
+    screenshots: PropTypes.arrayOf(screenshotShape)
   };
 
   constructor(...args) {
     super(...args);
-    this.handleClickShowNextScreenshot = ::this.handleClickShowNextScreenshot;
-    this.handleClickShowPreviousScreenshot =
-      ::this.handleClickShowPreviousScreenshot;
-    this.handleClickShowScreenshot = ::this.handleClickShowScreenshot;
-    this.handleKeyDown = ::this.handleKeyDown;
+    this.root = null;
   }
 
   componentDidMount() {
-    const root = getRoot();
-    const screenshotListUri = root.dataset.screenshotListUri;
-    window.addEventListener('keydown', this.handleKeyDown);
-    fetch(screenshotListUri).then(parseJson).then((response) => {
-      this.setState({
-        currentUri: null,
-        screenshots: response
-      });
-    });
+    this.root = this.root || getRoot();
+    const screenshotListUri = this.root.dataset.screenshotListUri;
+    this.props.dispatch(fetchScreenshotsAction(screenshotListUri));
   }
 
-  componentWillMount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return (
-      this.state.currentUri !== nextState.currentUri ||
-      !isEqual(this.state.screenshots, nextState.screenshots)
+      !isEqual(this.props.currentScreenshot, nextProps.currentScreenshot) ||
+      !isEqual(this.props.screenshots, nextProps.screenshots)
     );
-  }
-
-  handleClickShowNextScreenshot(event) {
-    event.preventDefault();
-    this.setState({
-      currentUri: this.getSiblingScreenshotUri(1)
-    });
-    return false;
-  }
-
-  handleClickShowPreviousScreenshot(event) {
-    event.preventDefault();
-    this.setState({
-      currentUri: this.getSiblingScreenshotUri(-1)
-    });
-    return false;
-  }
-
-  handleClickShowScreenshot(event) {
-    const anchor = event.currentTarget;
-    const uri = anchor.href;
-    if (typeof uri === 'undefined') {
-      return true;
-    }
-    event.preventDefault();
-    this.setState({
-      currentUri: this.state.currentUri === uri ? null : uri
-    });
-    return false;
-  }
-
-  handleKeyDown(event) {
-    const { keyCode } = event;
-    if (
-      this.state.currentUri === null ||
-      ![27, 37, 39].includes(keyCode)
-    ) {
-      return true;
-    }
-    event.preventDefault();
-    const currentUri = keyCode === 27 ?
-      null : this.getSiblingScreenshotUri(keyCode === 39 ? 1 : -1);
-    this.setState({ currentUri });
-    return false;
-  }
-
-  getSiblingScreenshotUri(count = 1) {
-    const uri = this.state.currentUri;
-    if (typeof uri === 'undefined') {
-      return null;
-    }
-    const screenshots = this.state.screenshots;
-    const screenshotUris = screenshots.map((screenshot) =>
-      screenshot.images.original.uri);
-    const index = screenshotUris.indexOf(uri);
-    if (index < 0) {
-      return null;
-    }
-    const siblingScreenshotUri = screenshotUris[index + count];
-    if (
-      typeof siblingScreenshotUri === 'undefined' ||
-      this.state.currentUri === siblingScreenshotUri
-    ) {
-      return null;
-    }
-    return siblingScreenshotUri;
   }
 
   render() {
@@ -115,34 +44,18 @@ export default class ScreenshotsComponent extends Component {
       <section id='recently-screenshots'>
         <h2>スクリーンショット</h2>
         <div className='screenshots'>
-          {this.state.screenshots.map((screenshot) => (
-            <ScreenshotComponent
-              enabled={this.state.currentUri === screenshot.images.original.uri}
-              key={screenshot.images.original.uri}
-              onClick={this.handleClickShowScreenshot}
-              screenshot={screenshot}
-            />
-          ))}
+          {this.props.screenshots.map(function(screenshot) {
+            const { original: image } = screenshot.images;
+            return (
+              <ScreenshotComponent
+                key={image.uri}
+                screenshot={screenshot}
+              />
+            );
+          })}
         </div>
-        <nav className={this.state.currentUri ? 'visible' : ''}>
-          <ul>
-            <li className='prev'>
-              <button
-                onClick={this.handleClickShowPreviousScreenshot}
-              >
-                prev
-              </button>
-            </li>
-            <li className='next'>
-              <button
-                onClick={this.handleClickShowNextScreenshot}
-              >
-                next
-              </button>
-            </li>
-          </ul>
-        </nav>
+        <PickupScreenshotComponent/>
       </section>
     );
   }
-}
+});
