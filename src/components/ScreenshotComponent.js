@@ -5,11 +5,16 @@ import { FormattedRelative } from 'react-intl';
 import { connect } from 'react-redux';
 import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';
 import screenshotShape from '../types/screenshotShape';
-import getRoot from '../utils/getRoot';
+import getEmptyPng from '../utils/getEmptyPng';
 
 export default connect()(class ScreenshotComponent extends Component {
+  static defaultProps = {
+    emptyPng: getEmptyPng()
+  };
   static displayName = 'ScreenshotComponent';
   static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    emptyPng: PropTypes.string.isRequired,
     screenshot: screenshotShape
   };
 
@@ -40,19 +45,20 @@ export default connect()(class ScreenshotComponent extends Component {
 
   handleClickImage(event) {
     event.preventDefault();
-    const screenshot = this.props.enabled ?
-      null : this.props.screenshot;
+    const { screenshot } = this.props;
     this.props.dispatch(setCurrentScreenshotAction(screenshot));
     return false;
   }
 
-  handleLoadImage(event) {
-    this.state.loaded || this.setState({
-      loaded: true
-    });
+  handleLoadImage() {
+    if (this.state.canLoadImage && !this.state.loaded) {
+      this.setState({
+        loaded: true
+      });
+    }
   }
 
-  handleScroll(event) {
+  handleScroll() {
     const { image, imageWrapper } = this.refs;
     const { offsetHeight } = imageWrapper;
     const { top: offsetTop } = imageWrapper.getBoundingClientRect();
@@ -89,14 +95,16 @@ export default connect()(class ScreenshotComponent extends Component {
           ref='imageWrapper'
         >
           <img
+            alt=''
             className={classNames({ visible: this.state.loaded })}
             height={image.height}
             onLoad={this.handleLoadImage}
             ref='image'
-            src={this.state.canLoadImage ? image.uri : null}
+            src={this.state.canLoadImage ? image.uri : this.props.emptyPng}
             width={image.width}
           />
           <img
+            alt=''
             className={classNames('mosaic', { visible: !this.state.loaded })}
             height={image.height}
             src={mosaicImage.uri}
