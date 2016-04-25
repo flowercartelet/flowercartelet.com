@@ -8,9 +8,9 @@
       "resolved": "https://registry.npmjs.org/classnames/-/classnames-2.2.3.tgz"
     },
     "core-js": {
-      "version": "2.2.2",
-      "from": "core-js@>=2.2.2 <3.0.0",
-      "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.2.2.tgz"
+      "version": "2.3.0",
+      "from": "core-js@2.3.0",
+      "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.3.0.tgz"
     },
     "intl": {
       "version": "1.1.0",
@@ -335,9 +335,9 @@
       }
     },
     "redux": {
-      "version": "3.5.1",
-      "from": "redux@latest",
-      "resolved": "https://registry.npmjs.org/redux/-/redux-3.5.1.tgz",
+      "version": "3.5.2",
+      "from": "redux@3.5.2",
+      "resolved": "https://registry.npmjs.org/redux/-/redux-3.5.2.tgz",
       "dependencies": {
         "lodash": {
           "version": "4.11.1",
@@ -362,9 +362,9 @@
           }
         },
         "symbol-observable": {
-          "version": "0.2.2",
-          "from": "symbol-observable@>=0.2.1 <0.3.0",
-          "resolved": "https://registry.npmjs.org/symbol-observable/-/symbol-observable-0.2.2.tgz"
+          "version": "0.2.3",
+          "from": "symbol-observable@>=0.2.3 <0.3.0",
+          "resolved": "https://registry.npmjs.org/symbol-observable/-/symbol-observable-0.2.3.tgz"
         }
       }
     },
