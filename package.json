@@ -2,6 +2,7 @@
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "dependencies": {
     "classnames": "^2.2.3",
+    "clean-css": "^3.4.12",
     "core-js": "^2.3.0",
     "intl": "^1.1.0",
     "lodash.isequal": "^4.1.4",

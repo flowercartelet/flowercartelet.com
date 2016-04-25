@@ -44,7 +44,8 @@ export default class HtmlComponent extends Component {
     markup: PropTypes.string,
     manifest: PropTypes.object.isRequired,
     screenshotListUri: PropTypes.string.isRequired,
-    shortDescription: PropTypes.string
+    shortDescription: PropTypes.string,
+    styleSheet: PropTypes.string
   };
 
   getViewPort() {
@@ -96,7 +97,8 @@ export default class HtmlComponent extends Component {
           <meta content={this.props.currentUri} property='og:url'/>
           <link href={`mailto:${this.props.author.email}`} rel='author'/>
           <link href={this.props.currentUri} rel='canonical'/>
-          <link href={this.props.manifest['style.css']} rel='stylesheet'/>
+          {this.props.styleSheet &&
+            <style dangerouslySetInnerHTML={{ __html: this.props.styleSheet }}/>}
           <link href='/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
           <title>
             {this.props.currentTitle}
