@@ -160,6 +160,7 @@ em {
 
 main {
   background-color: #fff;
+  display: block;
   min-height: 50vh;
   margin: 0;
   padding: 1em 0;
@@ -233,7 +234,6 @@ section p {
   flex-shrink: 0;
   height: auto;
   margin: 0;
-  overflow: hidden;
   padding: 0;
   position: relative;
   transition:
@@ -265,15 +265,38 @@ section p {
   }
 }
 
-.screenshot img {
-  bottom: 0;
-  display: block;
+.screenshot .image {
+  cursor: zoom-in;
+  height: 100%;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.screenshot .image img {
+  display: none;
   height: 100%;
   left: 50%;
   position: absolute;
-  top: 0;
   transform: translate(-50%, 0);
   width: auto;
+}
+
+.screenshot .image img.visible {
+  display: block;
+}
+
+.screenshot .image img.mosaic {
+  display: block;
+  opacity: 0;
+  transition: opacity .1s ease 0s;
+}
+
+.screenshot .image img.mosaic.visible {
+  opacity: 1;
 }
 
 .screenshot time {
@@ -316,6 +339,7 @@ section p {
 }
 
 .pickup-screenshot .image img {
+  cursor: zoom-out;
   height: auto;
   left: 50%;
   max-height: 100%;
@@ -351,6 +375,7 @@ section p {
   background-color: transparent;
   border: 0;
   color: transparent;
+  cursor: pointer;
   height: 100%;
   width: 100%;
 }
