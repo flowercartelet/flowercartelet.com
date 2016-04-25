@@ -16,6 +16,7 @@ export default connect(function({ screenshotsReducer }) {
   static displayName = 'PickupScreenshotComponent';
   static propTypes = {
     currentScreenshot: screenshotShape,
+    dispatch: PropTypes.func.isRequired,
     screenshots: PropTypes.arrayOf(screenshotShape)
   };
 
@@ -102,6 +103,7 @@ export default connect(function({ screenshotsReducer }) {
           {this.props.currentScreenshot && (function(image) {
             return (
               <img
+                alt=''
                 height={image.height}
                 src={image.uri}
                 width={image.width}
