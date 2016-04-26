@@ -1,5 +1,7 @@
 import isEqual from 'lodash.isequal';
 import React, { Component } from 'react';
+import FaExternalLink from 'react-icons/lib/fa/external-link';
+import FaTwitter from 'react-icons/lib/fa/twitter';
 import { IndexLink } from 'react-router';
 
 export default class HeaderComponent extends Component {
@@ -46,8 +48,9 @@ export default class HeaderComponent extends Component {
                 className='share twitter'
                 href={this.getTwitterUri()}
               >
-                <i className='fa fa-twitter'/>
-                &nbsp;Twitter
+                <FaTwitter style={{ verticalAlign: 'text-top' }}/>
+                {' '}
+                Twitter
               </a>
             </li>
             <li>
@@ -55,8 +58,9 @@ export default class HeaderComponent extends Component {
                 className='share lodestone'
                 href={this.getLodestoneUri()}
               >
-                Lodestone&nbsp;
-                <i className='fa fa-external-link'/>
+                Lodestone
+                {' '}
+                <FaExternalLink style={{ verticalAlign: 'text-top' }}/>
               </a>
             </li>
           </ul>

@@ -103,11 +103,6 @@ export default class HtmlComponent extends Component {
           <title>
             {this.props.currentTitle}
           </title>
-          <script
-            async={true}
-            crossOrigin='anonymous'
-            src='//use.fonticons.com/24b020d8.js'
-          />
           <GoogleAnalyticsTrackingCodeComponent/>
         </head>
         <body>
