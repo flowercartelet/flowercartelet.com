@@ -214,6 +214,18 @@
       "from": "react-dom@>=15.0.1 <16.0.0",
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.0.1.tgz"
     },
+    "react-icons": {
+      "version": "2.0.1",
+      "from": "react-icons@latest",
+      "resolved": "https://registry.npmjs.org/react-icons/-/react-icons-2.0.1.tgz",
+      "dependencies": {
+        "react-icon-base": {
+          "version": "1.0.0",
+          "from": "react-icon-base@1.0.0",
+          "resolved": "https://registry.npmjs.org/react-icon-base/-/react-icon-base-1.0.0.tgz"
+        }
+      }
+    },
     "react-intl": {
       "version": "2.1.0",
       "from": "react-intl@>=2.1.0 <3.0.0",

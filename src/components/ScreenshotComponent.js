@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import throttle from 'lodash.throttle';
 import React, { Component, PropTypes } from 'react';
+import FaClockO from 'react-icons/lib/fa/clock-o';
 import { FormattedRelative } from 'react-intl';
 import { connect } from 'react-redux';
 import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';
@@ -112,7 +113,7 @@ export default connect()(class ScreenshotComponent extends Component {
           />
         </div>
         <time dateTime={screenshot.createdAt}>
-          <i className='fa fa-clock-o'/>
+          <FaClockO style={{ verticalAlign: 'text-top' }}/>
           {' '}
           <FormattedRelative value={screenshot.createdAt}/>
         </time>
