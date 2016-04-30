@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';
 import screenshotShape from '../types/screenshotShape';
 
-export default connect(function({ screenshotsReducer }) {
+@connect(function({ screenshotsReducer }) {
   const { currentScreenshot, screenshots } = screenshotsReducer;
   return { currentScreenshot, screenshots };
-})(class PickupScreenshotComponent extends Component {
+})
+export default class PickupScreenshotComponent extends Component {
   static defaultProps = {
     currentScreenshot: null,
     screenshots: []
@@ -132,4 +133,4 @@ export default connect(function({ screenshotsReducer }) {
       </div>
     );
   }
-});
+}

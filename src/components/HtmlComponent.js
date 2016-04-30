@@ -103,7 +103,6 @@ export default class HtmlComponent extends Component {
           <title>
             {this.props.currentTitle}
           </title>
-          <GoogleAnalyticsTrackingCodeComponent/>
         </head>
         <body>
           <div id='app' dangerouslySetInnerHTML={{ __html: this.props.markup }}/>

@@ -7,10 +7,11 @@ import fetchScreenshotsAction from '../actions/fetchScreenshotsAction';
 import screenshotShape from '../types/screenshotShape';
 import getRoot from '../utils/getRoot';
 
-export default connect(function({ screenshotsReducer }) {
+@connect(function({ screenshotsReducer }) {
   const { currentScreenshot, screenshots } = screenshotsReducer;
   return { currentScreenshot, screenshots };
-})(class ScreenshotsComponent extends Component {
+})
+export default class ScreenshotsComponent extends Component {
   static defaultProps = {
     currentScreenshot: null,
     screenshots: []
@@ -58,4 +59,4 @@ export default connect(function({ screenshotsReducer }) {
       </section>
     );
   }
-});
+}
