@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import snakeCase from 'lodash.snakecase';
-import GoogleAnalyticsTrackingCodeComponent from './GoogleAnalyticsTrackingCodeComponent';
 
 export default class HtmlComponent extends Component {
   static defaultProps = {
