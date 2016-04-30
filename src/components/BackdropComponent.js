@@ -3,11 +3,12 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import getRoot from '../utils/getRoot';
 
-export default connect(function({ screenshotsReducer }) {
+@connect(function({ screenshotsReducer }) {
   const { currentScreenshot } = screenshotsReducer;
   const visible = !!currentScreenshot;
   return { visible };
-})(class BackdropComponent extends Component {
+})
+export default class BackdropComponent extends Component {
   static displayName = 'BackdropComponent';
   static propTypes = {
     visible: PropTypes.bool.isRequired
@@ -43,4 +44,4 @@ export default connect(function({ screenshotsReducer }) {
       <div className={classNames('backdrop', { visible })}/>
     );
   }
-});
+}

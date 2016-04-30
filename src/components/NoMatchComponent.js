@@ -1,5 +1,5 @@
 import isEqual from 'lodash.isequal';
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class NoMatchComponent extends Component {
   static displayName = 'NoMatchComponent';

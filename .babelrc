@@ -1,6 +1,7 @@
 {
   "compact": false,
   "plugins": [
+    "transform-decorators-legacy",
     "transform-async-to-generator",
     "transform-class-properties",
     "transform-function-bind",

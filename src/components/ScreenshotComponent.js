@@ -8,7 +8,8 @@ import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';
 import screenshotShape from '../types/screenshotShape';
 import getEmptyPng from '../utils/getEmptyPng';
 
-export default connect()(class ScreenshotComponent extends Component {
+@connect()
+export default class ScreenshotComponent extends Component {
   static defaultProps = {
     emptyPng: getEmptyPng()
   };
@@ -120,4 +121,4 @@ export default connect()(class ScreenshotComponent extends Component {
       </div>
     );
   }
-});
+}
