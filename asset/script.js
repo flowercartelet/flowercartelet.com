@@ -7,7 +7,7 @@
  *   author: Jed Watson
  *   maintainers: jedwatson <jed.watson@me.com>
  *   homepage: https://github.com/JedWatson/classnames#readme
- *   version: 2.2.4
+ *   version: 2.2.5
  * 
  * core-js:
  *   license: MIT (http://opensource.org/licenses/MIT)
