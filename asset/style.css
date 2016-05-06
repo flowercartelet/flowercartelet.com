@@ -46,6 +46,40 @@ em {
   font-weight: bold;
 }
 
+@keyframes loading-spin {
+  to {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+
+  50% {
+    opacity: .5;
+    transform: rotate(180deg);
+  }
+
+  from {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+.loading {
+  animation: loading-spin 2s linear infinite;
+  border-color: #2196f3;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-style: solid;
+  border-width: 15px;
+  display: none;
+  height: 100px;
+  margin: 150px auto 100px;
+  width: 100px;
+}
+
+.loading.visible {
+  display: block;
+}
+
 .ApplicationComponent > header {
   background-color: #666;
   color: #ddd;
@@ -276,6 +310,10 @@ section p {
   width: 100%;
 }
 
+.screenshot .image a {
+  cursor: inherit;
+}
+
 .screenshot .image img {
   display: none;
   height: 100%;
@@ -285,12 +323,12 @@ section p {
   width: auto;
 }
 
-.screenshot .image img.visible {
+.screenshot .image img.visible,
+.screenshot .image img.mosaic {
   display: block;
 }
 
 .screenshot .image img.mosaic {
-  display: block;
   opacity: 0;
   transition: opacity .1s ease 0s;
 }
