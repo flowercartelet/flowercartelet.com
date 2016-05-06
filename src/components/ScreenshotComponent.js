@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';
 import screenshotShape from '../types/screenshotShape';
 import getEmptyPng from '../utils/getEmptyPng';
+import isBrowser from '../utils/isBrowser';
 
 @connect()
 export default class ScreenshotComponent extends Component {
@@ -87,6 +88,7 @@ export default class ScreenshotComponent extends Component {
     const { screenshot } = this.props;
     const {
       mosaic: mosaicImage,
+      original: originalImage,
       thumbnail: image
     } = screenshot.images;
     return (
@@ -112,6 +114,19 @@ export default class ScreenshotComponent extends Component {
             src={mosaicImage.uri}
             width={image.width}
           />
+          {isBrowser() ||
+            <noscript>
+              <a href={originalImage.uri}>
+                <img
+                  alt=''
+                  className='visible'
+                  height={image.height}
+                  src={image.uri}
+                  width={image.width}
+                />
+              </a>
+            </noscript>
+          }
         </div>
         <time dateTime={screenshot.createdAt}>
           <FaClockO style={{ verticalAlign: 'text-top' }}/>

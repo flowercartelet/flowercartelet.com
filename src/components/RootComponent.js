@@ -3,14 +3,9 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import enLocaleData from 'react-intl/locale-data/en';
 import jaLocaleData from 'react-intl/locale-data/ja';
 import { Provider as ReduxProvider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
 addLocaleData([...enLocaleData, ...jaLocaleData]);
-
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const store = createStoreWithMiddleware(reducers);
 
 export default class RootComponent extends Component {
   static defaultProps = {
@@ -22,7 +17,7 @@ export default class RootComponent extends Component {
   };
 
   render() {
-    const { locale } = this.props;
+    const { locale, store } = this.props;
     return (
       <ReduxProvider store={store}>
         <IntlProvider locale={locale}>

@@ -7,17 +7,35 @@ import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import routes from '../src/routes';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import fetchScreenshotsAction from '../src/actions/fetchScreenshotsAction';
+import setScreenshotListUriAction from '../src/actions/setScreenshotListUriAction';
 import HtmlComponent from '../src/components/HtmlComponent';
 import RootComponent from '../src/components/RootComponent';
+import ScreenshotsComponent from '../src/components/ScreenshotsComponent';
+import reducers from '../src/reducers';
+import routes from '../src/routes';
 
 const locale = 'ja-jp';
+const screenshotListUri = 'https://screenshot.flowercartelet.com/index.json';
 
 function readFile(filePath) {
   return new Promise(function(resolve, reject) {
     fs.readFile(filePath, function(error, body) {
       return error instanceof Error ?
         reject(error) : resolve(body.toString());
+    });
+  });
+}
+
+function writeFile(filePath, body) {
+  return new Promise(function(resolve, reject) {
+    fs.writeFile(filePath, body, function(error) {
+      if (error instanceof Error) {
+        return reject(error);
+      }
+      return resolve(body);
     });
   });
 }
@@ -91,19 +109,21 @@ function getManifest(directory) {
   });
 }
 
-function writeHtml(location, filePath, { manifest, styleSheet }) {
+function writeHtml(location, filePath, { manifest, store, styleSheet }) {
   return new Promise(function(resolve, reject) {
     match({ location, routes }, function(error, redirectLocation, renderProps) {
       if (error instanceof Error) {
         return reject(error);
       }
       const markup = ReactDOM.renderToString(
-        <RootComponent locale={locale}>
+        <RootComponent locale={locale} store={store}>
           <RouterContext {...renderProps}/>
         </RootComponent>
       );
+      const initialState = store.getState();
       const html = ReactDOM.renderToStaticMarkup(
         <HtmlComponent
+          initialState={initialState}
           locale={locale}
           manifest={manifest}
           markup={markup}
@@ -111,25 +131,23 @@ function writeHtml(location, filePath, { manifest, styleSheet }) {
         />
       );
       const body = `<!DOCTYPE html>\n${html}`;
-      fs.writeFile(filePath, body, function(error) {
-        if (error instanceof Error) {
-          return reject(error);
-        }
-        return resolve(body);
-      });
+      return writeFile(filePath, body).then(resolve).catch(reject);
     });
   });
 }
 
 async function main() {
+  const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+  const store = createStoreWithMiddleware(reducers);
+  const directory = path.join(__dirname, '..');
+  const assetDirectory = path.join(directory, 'asset');
+  const styleSheetPath = path.join(assetDirectory, 'style.css');
   try {
-    const directory = path.join(__dirname, '..');
-    const assetDirectory = path.join(directory, 'asset');
-    const styleSheetPath = path.join(assetDirectory, 'style.css');
     const manifest = await getManifest(assetDirectory);
     const styleSheetSource = await readFile(styleSheetPath);
     const styleSheet = new CleanCSS().minify(styleSheetSource).styles;
-    const props = { manifest, styleSheet };
+    const props = { manifest, store, styleSheet };
+    await store.dispatch(setScreenshotListUriAction(screenshotListUri));
     await Promise.all([
       writeHtml('/', path.join(directory, 'index.html'), props),
       writeHtml('/404.html', path.join(directory, '404.html'), props)

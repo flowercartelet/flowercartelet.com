@@ -19,7 +19,6 @@ export default class HtmlComponent extends Component {
     },
     keywords: ['Lily Cartelet', 'FINAL FANTASY XIV', 'FF14', 'Fenrir'],
     manifest: {},
-    screenshotListUri: 'https://screenshot.flowercartelet.com/index.json',
     shortDescription: 'FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っているLily Carteletのウェブサイトです。'
   };
   static displayName = 'HtmlComponent';
@@ -38,11 +37,11 @@ export default class HtmlComponent extends Component {
       uri: PropTypes.string,
       width: PropTypes.number
     }),
+    initialState: PropTypes.object,
     keywords: PropTypes.arrayOf(PropTypes.string),
     locale: React.PropTypes.string,
     markup: PropTypes.string,
     manifest: PropTypes.object.isRequired,
-    screenshotListUri: PropTypes.string.isRequired,
     shortDescription: PropTypes.string,
     styleSheet: PropTypes.string
   };
@@ -60,7 +59,7 @@ export default class HtmlComponent extends Component {
   render() {
     const locale = this.props.locale || 'en';
     return (
-      <html data-screenshot-list-uri={this.props.screenshotListUri} lang={locale}>
+      <html lang={locale}>
         <head prefix='og: http://ogp.me/ns#'>
           <meta charSet='UTF-8'/>
           <meta content={this.props.author.name} name='author'/>
@@ -105,6 +104,9 @@ export default class HtmlComponent extends Component {
         </head>
         <body>
           <div id='app' dangerouslySetInnerHTML={{ __html: this.props.markup }}/>
+          <script dangerouslySetInnerHTML={{
+            __html: `window.__INITIAL_STATE__ = ${JSON.stringify(this.props.initialState)}`
+          }}/>
           <script async={true} src={this.props.manifest['script.js']}/>
         </body>
       </html>
