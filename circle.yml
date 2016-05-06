@@ -1,0 +1,20 @@
+machine:
+  node:
+    version: 4.4.4
+
+dependencies:
+  pre:
+    - sudo apt-get update -qq && sudo apt-get install -y python-pip && sudo pip install awscli
+
+test:
+  override:
+    - echo 'skip'
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - aws s3 cp ./asset/script.js s3://flowercartelet-assets/asset/script.js --acl public-read --cache-control 'max-age=31536000' --content-type 'application/javascript' --no-guess-mime-type
+      - aws s3 cp ./asset/style.css s3://flowercartelet-assets/asset/style.css --acl public-read --cache-control 'max-age=31536000' --content-type 'text/css' --no-guess-mime-type
+      - aws s3 cp ./asset/script.js.map s3://flowercartelet-assets/asset/script.js.map --acl public-read --cache-control 'private' --content-type 'application/json' --no-guess-mime-type
+      - aws s3 cp ./asset/manifest.json s3://flowercartelet-assets/asset/manifest.json --acl public-read --cache-control 'private' --content-type 'application/json' --no-guess-mime-type
