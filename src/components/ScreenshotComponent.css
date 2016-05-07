@@ -1,0 +1,96 @@
+.screenshot {
+  background-color: #000;
+  box-sizing: border-box;
+  flex-basis: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  transition:
+    flex-basis .5s ease 0s,
+    height .5s ease 0s,
+    min-width .5s ease 0s;
+  min-width: 100%;
+}
+
+.screenshot::before {
+  content: "";
+  display: block;
+  padding-top: 50%;
+}
+
+@media (min-width: 500px) {
+  .screenshot {
+    flex-basis: 50%;
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .screenshot {
+    flex-basis: 33.333%;
+    flex-basis: calc(100% / 3);
+    min-width: 33.333%;
+    min-width: calc(100% / 3);
+  }
+}
+
+.screenshot .image {
+  cursor: zoom-in;
+  height: 100%;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.screenshot .image a {
+  cursor: inherit;
+}
+
+.screenshot .image img {
+  display: none;
+  height: 100%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: auto;
+}
+
+.screenshot .image img.visible,
+.screenshot .image img.mosaic {
+  display: block;
+}
+
+.screenshot .image img.mosaic {
+  opacity: 0;
+  transition: opacity .1s ease 0s;
+}
+
+.screenshot .image img.mosaic.visible {
+  opacity: 1;
+}
+
+.screenshot time {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, .8);
+  border-radius: .8em;
+  bottom: 0;
+  color: #777;
+  display: block;
+  font-size: .75em;
+  margin: 0 .5em .5em 0;
+  opacity: 1;
+  padding: .25em 1em;
+  position: absolute;
+  right: 0;
+  transition: opacity .25s ease 0s;
+}
+
+.screenshot:hover time {
+  opacity: 0;
+}
