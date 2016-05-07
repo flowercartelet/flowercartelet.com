@@ -1,0 +1,32 @@
+.ApplicationComponent > footer {
+  background-color: #ddd;
+  color: #333;
+  margin: 0;
+  padding: .5em 1em .5em 1em;
+}
+
+@media (orientation: landscape), (orientation: portrait) and (min-width: 500px) {
+  .ApplicationComponent > footer {
+    background-color: rgba(211, 211, 211, .8);
+  }
+}
+
+.ApplicationComponent > footer p {
+  font-size: .85em;
+  margin: 0;
+  padding: 0;
+}
+
+.ApplicationComponent > footer .copyright {
+  text-align: center;
+}
+
+.ApplicationComponent > footer .external {
+  margin: 0;
+  padding: 0 0 1em 0;
+}
+
+.ApplicationComponent > footer .external p {
+  font-size: .8em;
+  text-align: right;
+}

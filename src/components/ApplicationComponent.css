@@ -1,0 +1,93 @@
+html {
+  font-family: sans-serif;
+  line-height: 1.5;
+  min-height: 100%;
+}
+
+html.overlay-enabled {
+  overflow: hidden;
+}
+
+body {
+  background-color: #666;
+  color: #333;
+  margin: 0;
+  min-height: 100%;
+  padding: 0;
+}
+
+@media (orientation: landscape), (orientation: portrait) and (min-width: 500px) {
+  body {
+    background-attachment: fixed;
+    background-image: url("/image/hero.jpeg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media
+  (orientation: landscape) and (min-height: 1080px),
+  (orientation: landscape) and (max-width: 1000px),
+  (orientation: portrait) and (min-width: 500px) {
+    body {
+      background-size: contain;
+    }
+}
+
+main {
+  background-color: #fff;
+  display: block;
+  min-height: 50vh;
+  margin: 0;
+  padding: 1em 0;
+}
+
+@media (orientation: landscape), (orientation: portrait) and (min-width: 500px) {
+  main {
+    background-color: rgba(255, 255, 255, .9);
+  }
+}
+
+section h2 {
+  background-color: #666;
+  color: #ddd;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 0 .5em 0;
+  padding: .5em;
+  text-align: center;
+}
+
+@media (orientation: landscape), (orientation: portrait) and (min-width: 500px) {
+  section h2 {
+    background-attachment: fixed;
+    background-image: url("/image/hero.jpeg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media
+  (orientation: landscape) and (min-height: 1080px),
+  (orientation: landscape) and (max-width: 1000px),
+  (orientation: portrait) and (min-width: 500px) {
+    section h2 {
+      background-size: contain;
+    }
+}
+
+section p {
+  margin: 1em 0.5em;
+  padding: 0;
+}
+
+a {
+  color: #337ab7;
+}
+
+em {
+  font-style: normal;
+  font-weight: bold;
+}

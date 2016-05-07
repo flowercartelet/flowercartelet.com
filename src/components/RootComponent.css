@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@import url("./ApplicationComponent.css");
+@import url("./LoadingComponent.css");
+@import url("./BackdropComponent.css");
+@import url("./HeaderComponent.css");
+@import url("./FooterComponent.css");
+@import url("./ScreenshotsComponent.css");
+@import url("./ScreenshotComponent.css");
+@import url("./PickupScreenshotComponent.css");

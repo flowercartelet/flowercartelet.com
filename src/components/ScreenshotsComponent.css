@@ -1,0 +1,19 @@
+.screenshots {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: .5em 0 1em;
+  transition:
+    padding-left 1s ease 0s,
+    padding-right 1s ease 0s;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .screenshots {
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+}
