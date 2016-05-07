@@ -1,6 +1,5 @@
 import '../src/polyfill';
 import CleanCSS from 'clean-css';
-import crypto from 'crypto';
 import isEqual from 'lodash.isequal';
 import path from 'path';
 import React from 'react';
@@ -8,31 +7,18 @@ import ReactDOM from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import fetchScreenshotsAction from '../src/actions/fetchScreenshotsAction';
 import setScreenshotListUriAction from '../src/actions/setScreenshotListUriAction';
 import HtmlComponent from '../src/components/HtmlComponent';
 import RootComponent from '../src/components/RootComponent';
 import ScreenshotsComponent from '../src/components/ScreenshotsComponent';
 import reducers from '../src/reducers';
 import routes from '../src/routes';
+import getHash from '../src/utils/getHash';
 import readFile from '../src/utils/readFile';
 import writeFile from '../src/utils/writeFile';
 
 const locale = 'ja-jp';
 const screenshotListUri = 'https://screenshot.flowercartelet.com/index.json';
-
-function getHash(filePath) {
-  return new Promise(async function(resolve, reject) {
-    try {
-      const body = await readFile(filePath);
-      const hash = crypto.createHash('sha512');
-      hash.update(body);
-      return resolve(hash.digest('hex'));
-    } catch (error) {
-      return reject(error);
-    }
-  });
-}
 
 function getCurrentManifest(manifestPath) {
   return new Promise(async function(resolve) {
@@ -52,7 +38,8 @@ function generateManifest(files, { directory }) {
     return Promise.all(files.map(function(fileName) {
       return new Promise(async function(done) {
         const filePath = path.join(directory, fileName);
-        const hash = await getHash(filePath);
+        const body = await readFile(filePath);
+        const hash = await getHash(body);
         const assetUri = `/asset/${fileName}?${hash}`;
         manifest[fileName] = assetUri;
         done(assetUri);
@@ -87,28 +74,32 @@ function getManifest(directory) {
   });
 }
 
-function writeHtml(location, filePath, { manifest, store, styleSheet }) {
+function generateHtml({ manifest, store, styleSheet }, renderProps) {
+  const markup = ReactDOM.renderToString(
+    <RootComponent locale={locale} store={store}>
+      <RouterContext {...renderProps}/>
+    </RootComponent>
+  );
+  const initialState = store.getState();
+  const html = ReactDOM.renderToStaticMarkup(
+    <HtmlComponent
+      initialState={initialState}
+      locale={locale}
+      manifest={manifest}
+      markup={markup}
+      styleSheet={styleSheet}
+    />
+  );
+  return html;
+}
+
+function writeHtml(location, filePath, props) {
   return new Promise(function(resolve, reject) {
     match({ location, routes }, function(error, redirectLocation, renderProps) {
       if (error instanceof Error) {
         return reject(error);
       }
-      const styles = [];
-      const markup = ReactDOM.renderToString(
-        <RootComponent locale={locale} store={store}>
-          <RouterContext {...renderProps}/>
-        </RootComponent>
-      );
-      const initialState = store.getState();
-      const html = ReactDOM.renderToStaticMarkup(
-        <HtmlComponent
-          initialState={initialState}
-          locale={locale}
-          manifest={manifest}
-          markup={markup}
-          styleSheet={styleSheet}
-        />
-      );
+      const html = generateHtml(props, renderProps);
       const body = `<!DOCTYPE html>\n${html}`;
       return writeFile(filePath, body).then(resolve).catch(reject);
     });
