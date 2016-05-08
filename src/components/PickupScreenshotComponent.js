@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import isEqual from 'lodash.isEqual';
+import isEqual from 'lodash.isequal';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';

@@ -1,10 +1,14 @@
 {
   "author": "Lily Cartelet <flowercartelet@gmail.com>",
   "dependencies": {
+    "babel-regenerator-runtime": "^6.5.0",
     "classnames": "^2.2.5",
+    "clean-css": "^3.4.12",
     "core-js": "^2.3.0",
     "intl": "^1.1.0",
     "isomorphic-fetch": "^2.2.1",
+    "koa": "^2.0.0",
+    "koa-static": "^3.0.0",
     "lodash.isequal": "^4.1.4",
     "lodash.snakecase": "^4.0.1",
     "lodash.throttle": "^4.0.1",
@@ -22,6 +26,7 @@
   "description": "かーたんのほーむぺーじ",
   "devDependencies": {
     "babel-cli": "^6.8.0",
+    "babel-plugin-add-module-exports": "^0.2.0",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.8.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -31,7 +36,6 @@
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.0",
-    "clean-css": "^3.4.12",
     "exorcist": "^0.4.0",
     "licensify": "^3.1.0",
     "uglifyify": "^3.0.1"
@@ -43,7 +47,10 @@
   "scripts": {
     "build": "npm run build:script && npm run build:static",
     "build:script": "NODE_ENV=production browserify src/client.js -d -g uglifyify -p licensify -t babelify | exorcist asset/script.js.map -b './' -r '../' > asset/script.js",
-    "build:static": "babel-node ./script/renderer.js"
+    "build:server": "babel ./src -d ./lib",
+    "build:static": "babel-node ./script/renderer.js",
+    "server": "node ./script/server.js",
+    "start": "npm run build:script && npm run build:server && npm run server"
   },
   "version": "1.0.0"
 }
