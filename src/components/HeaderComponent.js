@@ -33,6 +33,7 @@ export default class HeaderComponent extends Component {
             <rt>りりぃ</rt>
             <rp>)</rp>
           </ruby>
+          {' '}
           <ruby>
             <em>Cartelet</em>
             <rp>(</rp>
