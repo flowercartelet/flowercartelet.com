@@ -1,6 +1,7 @@
 {
   "compact": false,
   "plugins": [
+    "add-module-exports",
     "transform-decorators-legacy",
     "transform-async-to-generator",
     "transform-class-properties",
