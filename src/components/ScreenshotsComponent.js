@@ -7,6 +7,7 @@ import PickupScreenshotComponent from './PickupScreenshotComponent';
 import ScreenshotComponent from './ScreenshotComponent';
 import fetchScreenshotsAction from '../actions/fetchScreenshotsAction';
 import screenshotShape from '../types/screenshotShape';
+import isBrowser from '../utils/isBrowser';
 
 @connect(function({ screenshotsReducer }) {
   const {
@@ -28,23 +29,30 @@ export default class ScreenshotsComponent extends Component {
     screenshots: PropTypes.arrayOf(screenshotShape)
   };
 
-  constructor(...args) {
-    super(...args);
-    this.root = null;
-  }
+  state = {
+    count: 9
+  };
 
   componentDidMount() {
     const { screenshots } = this.props;
     if (screenshots.length < 1) {
       const { screenshotListUri } = this.props;
       this.props.dispatch(fetchScreenshotsAction(screenshotListUri));
+    } else {
+      this.setState({ count: screenshots.length });
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  componentWillReceiveProps(nextProps) {
+    const { screenshots } = nextProps;
+    this.setState({ count: screenshots.length });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
     return (
       !isEqual(this.props.currentScreenshot, nextProps.currentScreenshot) ||
-      !isEqual(this.props.screenshots, nextProps.screenshots)
+      !isEqual(this.props.screenshots, nextProps.screenshots) ||
+      this.state.count !== nextState.count
     );
   }
 
@@ -55,7 +63,7 @@ export default class ScreenshotsComponent extends Component {
         <h2>スクリーンショット</h2>
         <LoadingComponent visible={screenshots.length < 1}/>
         <div className='screenshots'>
-          {screenshots.map(function(screenshot) {
+          {screenshots.slice(0, this.state.count).map(function(screenshot) {
             const { original: image } = screenshot.images;
             return (
               <ScreenshotComponent
