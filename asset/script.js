@@ -20,7 +20,7 @@
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   maintainers: zloirock <zloirock@zloirock.ru>
  *   homepage: https://github.com/zloirock/core-js#readme
- *   version: 2.3.0
+ *   version: 2.4.0
  * 
  * debug:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -180,9 +180,9 @@
  * process:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Roman Shtylman <shtylman@gmail.com>
- *   maintainers: coolaj86 <coolaj86@gmail.com>, defunctzombie <shtylman@gmail.com>
+ *   maintainers: coolaj86 <coolaj86@gmail.com>, cwmma <calvin.metcalf@gmail.com>, defunctzombie <shtylman@gmail.com>
  *   homepage: https://github.com/shtylman/node-process#readme
- *   version: 0.11.2
+ *   version: 0.11.3
  * 
  * query-string:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -321,7 +321,7 @@
 },{"_process":3}],2:[function(require,module,exports){
 
 },{}],3:[function(require,module,exports){
-function cleanUpNextTick(){draining=!1,currentQueue.length?queue=currentQueue.concat(queue):queueIndex=-1,queue.length&&drainQueue()}function drainQueue(){if(!draining){var e=setTimeout(cleanUpNextTick);draining=!0;for(var n=queue.length;n;){for(currentQueue=queue,queue=[];++queueIndex<n;)currentQueue&&currentQueue[queueIndex].run();queueIndex=-1,n=queue.length}currentQueue=null,draining=!1,clearTimeout(e)}}function Item(e,n){this.fun=e,this.array=n}function noop(){}var process=module.exports={},queue=[],draining=!1,currentQueue,queueIndex=-1;process.nextTick=function(e){var n=new Array(arguments.length-1);if(arguments.length>1)for(var r=1;r<arguments.length;r++)n[r-1]=arguments[r];queue.push(new Item(e,n)),1!==queue.length||draining||setTimeout(drainQueue,0)},Item.prototype.run=function(){this.fun.apply(null,this.array)},process.title="browser",process.browser=!0,process.env={},process.argv=[],process.version="",process.versions={},process.on=noop,process.addListener=noop,process.once=noop,process.off=noop,process.removeListener=noop,process.removeAllListeners=noop,process.emit=noop,process.binding=function(e){throw new Error("process.binding is not supported")},process.cwd=function(){return"/"},process.chdir=function(e){throw new Error("process.chdir is not supported")},process.umask=function(){return 0};
+function cleanUpNextTick(){draining&&currentQueue&&(draining=!1,currentQueue.length?queue=currentQueue.concat(queue):queueIndex=-1,queue.length&&drainQueue())}function drainQueue(){if(!draining){var e=setTimeout(cleanUpNextTick);draining=!0;for(var n=queue.length;n;){for(currentQueue=queue,queue=[];++queueIndex<n;)currentQueue&&currentQueue[queueIndex].run();queueIndex=-1,n=queue.length}currentQueue=null,draining=!1,clearTimeout(e)}}function Item(e,n){this.fun=e,this.array=n}function noop(){}var process=module.exports={},queue=[],draining=!1,currentQueue,queueIndex=-1;process.nextTick=function(e){var n=new Array(arguments.length-1);if(arguments.length>1)for(var r=1;r<arguments.length;r++)n[r-1]=arguments[r];queue.push(new Item(e,n)),1!==queue.length||draining||setTimeout(drainQueue,0)},Item.prototype.run=function(){this.fun.apply(null,this.array)},process.title="browser",process.browser=!0,process.env={},process.argv=[],process.version="",process.versions={},process.on=noop,process.addListener=noop,process.once=noop,process.off=noop,process.removeListener=noop,process.removeAllListeners=noop,process.emit=noop,process.binding=function(e){throw new Error("process.binding is not supported")},process.cwd=function(){return"/"},process.chdir=function(e){throw new Error("process.chdir is not supported")},process.umask=function(){return 0};
 
 },{}],4:[function(require,module,exports){
 !function(){"use strict";function e(){for(var r=[],o=0;o<arguments.length;o++){var f=arguments[o];if(f){var i=typeof f;if("string"===i||"number"===i)r.push(f);else if(Array.isArray(f))r.push(e.apply(null,f));else if("object"===i)for(var t in f)n.call(f,t)&&f[t]&&r.push(t)}}return r.join(" ")}var n={}.hasOwnProperty;"undefined"!=typeof module&&module.exports?module.exports=e:"function"==typeof define&&"object"==typeof define.amd&&define.amd?define("classnames",[],function(){return e}):window.classNames=e}();
@@ -348,7 +348,7 @@ var cof=require("./_cof"),TAG=require("./_wks")("toStringTag"),ARG="Arguments"==
 var toString={}.toString;module.exports=function(t){return toString.call(t).slice(8,-1)};
 
 },{}],12:[function(require,module,exports){
-var core=module.exports={version:"2.3.0"};"number"==typeof __e&&(__e=core);
+var core=module.exports={version:"2.4.0"};"number"==typeof __e&&(__e=core);
 
 },{}],13:[function(require,module,exports){
 var aFunction=require("./_a-function");module.exports=function(n,r,t){if(aFunction(n),void 0===r)return n;switch(t){case 1:return function(t){return n.call(r,t)};case 2:return function(t,u){return n.call(r,t,u)};case 3:return function(t,u,e){return n.call(r,t,u,e)}}return function(){return n.apply(r,arguments)}};
@@ -372,7 +372,7 @@ var global=require("./_global"),core=require("./_core"),hide=require("./_hide"),
 module.exports=function(r){try{return!!r()}catch(t){return!0}};
 
 },{}],20:[function(require,module,exports){
-var ctx=require("./_ctx"),call=require("./_iter-call"),isArrayIter=require("./_is-array-iter"),anObject=require("./_an-object"),toLength=require("./_to-length"),getIterFn=require("./core.get-iterator-method");module.exports=function(e,r,t,i,n){var o,a,c,l=n?function(){return e}:getIterFn(e),u=ctx(t,i,r?2:1),f=0;if("function"!=typeof l)throw TypeError(e+" is not iterable!");if(isArrayIter(l))for(o=toLength(e.length);o>f;f++)r?u(anObject(a=e[f])[0],a[1]):u(e[f]);else for(c=l.call(e);!(a=c.next()).done;)call(c,u,a.value,r)};
+var ctx=require("./_ctx"),call=require("./_iter-call"),isArrayIter=require("./_is-array-iter"),anObject=require("./_an-object"),toLength=require("./_to-length"),getIterFn=require("./core.get-iterator-method"),BREAK={},RETURN={},exports=module.exports=function(e,r,t,o,i){var n,a,R,c,l=i?function(){return e}:getIterFn(e),u=ctx(t,o,r?2:1),E=0;if("function"!=typeof l)throw TypeError(e+" is not iterable!");if(isArrayIter(l)){for(n=toLength(e.length);n>E;E++)if(c=r?u(anObject(a=e[E])[0],a[1]):u(e[E]),c===BREAK||c===RETURN)return c}else for(R=l.call(e);!(a=R.next()).done;)if(c=call(R,u,a.value,r),c===BREAK||c===RETURN)return c};exports.BREAK=BREAK,exports.RETURN=RETURN;
 
 },{"./_an-object":8,"./_ctx":13,"./_is-array-iter":28,"./_iter-call":30,"./_to-length":56,"./core.get-iterator-method":61}],21:[function(require,module,exports){
 var global=module.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=global);
