@@ -116,7 +116,10 @@ export default class ScreenshotComponent extends Component {
           />
           {isBrowser() ||
             <noscript>
-              <a href={originalImage.uri}>
+              <a
+                href={originalImage.uri}
+                target='_blank'
+              >
                 <img
                   alt=''
                   className='visible'
