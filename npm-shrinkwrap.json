@@ -49,9 +49,9 @@
       "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.4.0.tgz"
     },
     "intl": {
-      "version": "1.1.0",
-      "from": "intl@>=1.1.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/intl/-/intl-1.1.0.tgz"
+      "version": "1.2.1",
+      "from": "intl@1.2.1",
+      "resolved": "https://registry.npmjs.org/intl/-/intl-1.2.1.tgz"
     },
     "isomorphic-fetch": {
       "version": "2.2.1",
@@ -494,9 +494,9 @@
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.0.2.tgz"
     },
     "react-i13n": {
-      "version": "2.0.13",
-      "from": "react-i13n@>=2.0.13 <3.0.0",
-      "resolved": "https://registry.npmjs.org/react-i13n/-/react-i13n-2.0.13.tgz",
+      "version": "2.1.0",
+      "from": "react-i13n@2.1.0",
+      "resolved": "https://registry.npmjs.org/react-i13n/-/react-i13n-2.1.0.tgz",
       "dependencies": {
         "debug": {
           "version": "2.2.0",
@@ -511,9 +511,9 @@
           }
         },
         "hoist-non-react-statics": {
-          "version": "1.0.5",
-          "from": "hoist-non-react-statics@>=1.0.3 <2.0.0",
-          "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.0.5.tgz"
+          "version": "1.0.6",
+          "from": "hoist-non-react-statics@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.0.6.tgz"
         },
         "setimmediate": {
           "version": "1.0.4",
@@ -522,7 +522,7 @@
         },
         "subscribe-ui-event": {
           "version": "1.0.10",
-          "from": "subscribe-ui-event@>=1.0.5 <2.0.0",
+          "from": "subscribe-ui-event@>=1.0.7 <2.0.0",
           "resolved": "https://registry.npmjs.org/subscribe-ui-event/-/subscribe-ui-event-1.0.10.tgz",
           "dependencies": {
             "eventemitter3": {
@@ -531,9 +531,9 @@
               "resolved": "https://registry.npmjs.org/eventemitter3/-/eventemitter3-1.2.0.tgz"
             },
             "lodash": {
-              "version": "4.11.2",
+              "version": "4.12.0",
               "from": "lodash@>=4.0.0 <5.0.0",
-              "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.11.2.tgz"
+              "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.12.0.tgz"
             },
             "raf": {
               "version": "3.2.0",
