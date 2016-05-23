@@ -49,9 +49,9 @@
       "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.4.0.tgz"
     },
     "intl": {
-      "version": "1.2.2",
-      "from": "intl@1.2.2",
-      "resolved": "https://registry.npmjs.org/intl/-/intl-1.2.2.tgz"
+      "version": "1.2.3",
+      "from": "intl@1.2.3",
+      "resolved": "https://registry.npmjs.org/intl/-/intl-1.2.3.tgz"
     },
     "isomorphic-fetch": {
       "version": "2.2.1",
@@ -436,9 +436,9 @@
       }
     },
     "react": {
-      "version": "15.0.2",
-      "from": "react@>=15.0.2 <16.0.0",
-      "resolved": "https://registry.npmjs.org/react/-/react-15.0.2.tgz",
+      "version": "15.1.0",
+      "from": "react@15.1.0",
+      "resolved": "https://registry.npmjs.org/react/-/react-15.1.0.tgz",
       "dependencies": {
         "fbjs": {
           "version": "0.8.2",
@@ -456,9 +456,9 @@
               "resolved": "https://registry.npmjs.org/promise/-/promise-7.1.1.tgz",
               "dependencies": {
                 "asap": {
-                  "version": "2.0.3",
+                  "version": "2.0.4",
                   "from": "asap@>=2.0.3 <2.1.0",
-                  "resolved": "https://registry.npmjs.org/asap/-/asap-2.0.3.tgz"
+                  "resolved": "https://registry.npmjs.org/asap/-/asap-2.0.4.tgz"
                 }
               }
             },
@@ -470,9 +470,9 @@
           }
         },
         "loose-envify": {
-          "version": "1.1.0",
+          "version": "1.2.0",
           "from": "loose-envify@>=1.1.0 <2.0.0",
-          "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.1.0.tgz",
+          "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.2.0.tgz",
           "dependencies": {
             "js-tokens": {
               "version": "1.0.3",
@@ -483,15 +483,15 @@
         },
         "object-assign": {
           "version": "4.1.0",
-          "from": "object-assign@>=4.0.1 <5.0.0",
+          "from": "object-assign@>=4.1.0 <5.0.0",
           "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.0.tgz"
         }
       }
     },
     "react-dom": {
-      "version": "15.0.2",
-      "from": "react-dom@>=15.0.2 <16.0.0",
-      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.0.2.tgz"
+      "version": "15.1.0",
+      "from": "react-dom@15.1.0",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.1.0.tgz"
     },
     "react-i13n": {
       "version": "2.1.0",
@@ -665,9 +665,9 @@
       }
     },
     "react-router": {
-      "version": "2.4.0",
-      "from": "react-router@>=2.4.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/react-router/-/react-router-2.4.0.tgz",
+      "version": "2.4.1",
+      "from": "react-router@2.4.1",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-2.4.1.tgz",
       "dependencies": {
         "history": {
           "version": "2.1.1",
@@ -694,9 +694,9 @@
           }
         },
         "hoist-non-react-statics": {
-          "version": "1.0.5",
+          "version": "1.0.6",
           "from": "hoist-non-react-statics@>=1.0.5 <2.0.0",
-          "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.0.5.tgz"
+          "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.0.6.tgz"
         },
         "invariant": {
           "version": "2.2.1",
@@ -704,9 +704,9 @@
           "resolved": "https://registry.npmjs.org/invariant/-/invariant-2.2.1.tgz",
           "dependencies": {
             "loose-envify": {
-              "version": "1.1.0",
+              "version": "1.2.0",
               "from": "loose-envify@>=1.0.0 <2.0.0",
-              "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.1.0.tgz",
+              "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.2.0.tgz",
               "dependencies": {
                 "js-tokens": {
                   "version": "1.0.3",
@@ -723,9 +723,9 @@
           "resolved": "https://registry.npmjs.org/warning/-/warning-2.1.0.tgz",
           "dependencies": {
             "loose-envify": {
-              "version": "1.1.0",
+              "version": "1.2.0",
               "from": "loose-envify@>=1.0.0 <2.0.0",
-              "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.1.0.tgz",
+              "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.2.0.tgz",
               "dependencies": {
                 "js-tokens": {
                   "version": "1.0.3",
