@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import isEqual from 'lodash.isequal';
+import shallowEqual from 'fbjs/lib/shallowEqual';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import LoadingComponent from './LoadingComponent';
@@ -7,6 +7,7 @@ import PickupScreenshotComponent from './PickupScreenshotComponent';
 import ScreenshotComponent from './ScreenshotComponent';
 import fetchScreenshotsAction from '../actions/fetchScreenshotsAction';
 import screenshotShape from '../types/screenshotShape';
+import compareScreenshots from '../utils/compareScreenshots';
 import isBrowser from '../utils/isBrowser';
 
 @connect(function({ screenshotsReducer }) {
@@ -49,10 +50,15 @@ export default class ScreenshotsComponent extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    const { currentScreenshot, screenshots } = this.props;
+    const {
+      currentScreenshot: nextScreenshot,
+      screenshots: nextScreenshots
+    } = nextProps
     return (
-      !isEqual(this.props.currentScreenshot, nextProps.currentScreenshot) ||
-      !isEqual(this.props.screenshots, nextProps.screenshots) ||
-      this.state.count !== nextState.count
+      this.state.count !== nextState.count ||
+      !compareScreenshots(currentScreenshot, nextScreenshot) ||
+      !shallowEqual(screenshots, nextScreenshots)
     );
   }
 

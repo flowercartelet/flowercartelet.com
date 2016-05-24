@@ -1,5 +1,5 @@
-import isEqual from 'lodash.isequal';
 import React, { Component } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import { intlShape } from 'react-intl';
 
 export default class FooterComponent extends Component {
@@ -8,11 +8,8 @@ export default class FooterComponent extends Component {
   };
   static displayName = 'FooterComponent';
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      !isEqual(this.props, nextProps) ||
-      !isEqual(this.state, nextState)
-    )
+  shouldComponentUpdate(...args) {
+    return shallowCompare(this, ...args);
   }
 
   render() {

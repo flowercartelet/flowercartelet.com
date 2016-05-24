@@ -1,8 +1,12 @@
-import isEqual from 'lodash.isequal';
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 
 export default class NoMatchComponent extends Component {
   static displayName = 'NoMatchComponent';
+
+  shouldComponentUpdate(...args) {
+    return shallowCompare(this, ...args);
+  }
 
   render() {
     return (

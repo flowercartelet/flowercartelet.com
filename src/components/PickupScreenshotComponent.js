@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import isEqual from 'lodash.isequal';
+import shallowEqual from 'fbjs/lib/shallowEqual';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';
 import screenshotShape from '../types/screenshotShape';
+import compareScreenshots from '../utils/compareScreenshots';
 
 @connect(function({ screenshotsReducer }) {
   const { currentScreenshot, screenshots } = screenshotsReducer;
@@ -49,7 +50,7 @@ export default class PickupScreenshotComponent extends Component {
       const siblingScreenshot = index >= 0 && screenshots[index + count];
       return (
         typeof siblingScreenshot === 'undefined' ||
-        isEqual(this.props.currentScreenshot, siblingScreenshot)
+        compareScreenshots(this.props.currentScreenshot, siblingScreenshot)
       ) ? null : siblingScreenshot;
     }
     return null;
@@ -89,9 +90,14 @@ export default class PickupScreenshotComponent extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
+    const { currentScreenshot, screenshots } = this.props;
+    const {
+      currentScreenshot: nextScreenshot,
+      screenshots: nextScreenshots
+    } = nextProps
     return (
-      !isEqual(this.props.currentScreenshot, nextProps.currentScreenshot) ||
-      !isEqual(this.props.screenshots, nextProps.screenshots)
+      !compareScreenshots(currentScreenshot, nextScreenshot) ||
+      !shallowEqual(screenshots, nextScreenshots)
     );
   }
 
