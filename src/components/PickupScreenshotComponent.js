@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import shallowEqual from 'fbjs/lib/shallowEqual';
 import React, { Component, PropTypes } from 'react';
+import FaAngleLeft from 'react-icons/lib/fa/angle-left';
+import FaAngleRight from 'react-icons/lib/fa/angle-right';
 import { connect } from 'react-redux';
 import setCurrentScreenshotAction from '../actions/setCurrentScreenshotAction';
 import screenshotShape from '../types/screenshotShape';
@@ -124,14 +126,14 @@ export default class PickupScreenshotComponent extends Component {
               <button
                 onClick={this.handleClickPreviousButton}
               >
-                prev
+                <FaAngleLeft size='150px'/>
               </button>
             </li>
             <li className='next'>
               <button
                 onClick={this.handleClickNextButton}
               >
-                next
+                <FaAngleRight size='150px'/>
               </button>
             </li>
           </ul>

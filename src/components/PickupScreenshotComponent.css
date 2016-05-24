@@ -54,12 +54,28 @@
   background-color: transparent;
   border: 0;
   color: transparent;
+  color: rgba(255, 255, 255, 0);
   cursor: pointer;
   height: 100%;
+  transition: color .75s ease 0s;
   width: 100%;
+}
+
+.pickup-screenshot nav .prev button:hover,
+.pickup-screenshot nav .next button:hover {
+  color: white;
+  color: rgba(255, 255, 255, .8);
 }
 
 .pickup-screenshot nav .prev button:focus,
 .pickup-screenshot nav .next button:focus {
   outline: 0;
+}
+
+.pickup-screenshot nav .prev svg {
+  margin-left: -100px;
+}
+
+.pickup-screenshot nav .next svg {
+  margin-right: -100px;
 }
