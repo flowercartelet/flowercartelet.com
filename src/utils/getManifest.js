@@ -1,4 +1,4 @@
-import isEqual from 'lodash.isequal';
+import shallowEqual from 'fbjs/lib/shallowEqual';
 import path from 'path';
 import generateManifest from './generateManifest';
 import getCurrentManifest from './getCurrentManifest';
@@ -18,7 +18,7 @@ export default function getManifest(directory) {
       manifest,
       await generateManifest(Object.keys(manifest), { directory })
     );
-    if (isEqual(currentManifest, manifest)) {
+    if (shallowEqual(currentManifest, manifest)) {
       return resolve(manifest);
     }
     const manifestJson = JSON.stringify(manifest);

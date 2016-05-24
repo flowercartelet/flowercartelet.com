@@ -1,5 +1,5 @@
-import isEqual from 'lodash.isequal';
 import React, { Component } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import FaExternalLink from 'react-icons/lib/fa/external-link';
 import FaTwitter from 'react-icons/lib/fa/twitter';
 import { IndexLink } from 'react-router';
@@ -7,8 +7,8 @@ import { IndexLink } from 'react-router';
 export default class HeaderComponent extends Component {
   static displayName = 'HeaderComponent';
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return !isEqual(this.props, nextProps) || !isEqual(this.state, nextState);
+  shouldComponentUpdate(...args) {
+    return shallowCompare(this, ...args);
   }
 
   getTwitterUri() {

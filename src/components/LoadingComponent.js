@@ -9,6 +9,10 @@ export default class LoadingComponent extends Component {
     visible: PropTypes.bool.isRequired
   };
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.visible !== nextProps.visible;
+  }
+
   render() {
     return (
       <div className={classNames('loading', {

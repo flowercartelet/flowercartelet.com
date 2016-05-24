@@ -1,4 +1,3 @@
-import isEqual from 'lodash.isequal';
 import React, { Component, PropTypes } from 'react';
 import ReactI13nGoogleAnalytics from 'react-i13n-ga';
 import { locationShape } from 'react-router';

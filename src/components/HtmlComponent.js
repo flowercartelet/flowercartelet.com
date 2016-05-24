@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import snakeCase from 'lodash.snakecase';
 
 export default class HtmlComponent extends Component {
   static defaultProps = {
@@ -89,7 +88,7 @@ export default class HtmlComponent extends Component {
             <meta content={this.props.image.height} property='og:image:height'/>}
           {this.props.image && this.props.image.width &&
             <meta content={this.props.image.width} property='og:image:width'/>}
-          <meta content={snakeCase(locale)} property='og:locale'/>
+          <meta content={(locale || '').split('-').join('_')} property='og:locale'/>
           <meta content={this.props.currentTitle} property='og:title'/>
           <meta content='website' property='og:type'/>
           <meta content={this.props.currentUri} property='og:url'/>

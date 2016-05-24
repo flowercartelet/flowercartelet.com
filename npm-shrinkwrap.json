@@ -48,6 +48,47 @@
       "from": "core-js@2.4.0",
       "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.4.0.tgz"
     },
+    "fbjs": {
+      "version": "0.8.2",
+      "from": "fbjs@latest",
+      "resolved": "https://registry.npmjs.org/fbjs/-/fbjs-0.8.2.tgz",
+      "dependencies": {
+        "core-js": {
+          "version": "1.2.6",
+          "from": "core-js@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/core-js/-/core-js-1.2.6.tgz"
+        },
+        "loose-envify": {
+          "version": "1.2.0",
+          "from": "loose-envify@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.2.0.tgz",
+          "dependencies": {
+            "js-tokens": {
+              "version": "1.0.3",
+              "from": "js-tokens@>=1.0.1 <2.0.0",
+              "resolved": "https://registry.npmjs.org/js-tokens/-/js-tokens-1.0.3.tgz"
+            }
+          }
+        },
+        "promise": {
+          "version": "7.1.1",
+          "from": "promise@>=7.1.1 <8.0.0",
+          "resolved": "https://registry.npmjs.org/promise/-/promise-7.1.1.tgz",
+          "dependencies": {
+            "asap": {
+              "version": "2.0.4",
+              "from": "asap@>=2.0.3 <2.1.0",
+              "resolved": "https://registry.npmjs.org/asap/-/asap-2.0.4.tgz"
+            }
+          }
+        },
+        "ua-parser-js": {
+          "version": "0.7.10",
+          "from": "ua-parser-js@>=0.7.9 <0.8.0",
+          "resolved": "https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-0.7.10.tgz"
+        }
+      }
+    },
     "intl": {
       "version": "1.2.3",
       "from": "intl@1.2.3",
@@ -375,54 +416,6 @@
         }
       }
     },
-    "lodash.isequal": {
-      "version": "4.2.0",
-      "from": "lodash.isequal@4.2.0",
-      "resolved": "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.2.0.tgz",
-      "dependencies": {
-        "lodash._root": {
-          "version": "3.0.1",
-          "from": "lodash._root@>=3.0.0 <3.1.0",
-          "resolved": "https://registry.npmjs.org/lodash._root/-/lodash._root-3.0.1.tgz"
-        },
-        "lodash.keys": {
-          "version": "4.0.7",
-          "from": "lodash.keys@>=4.0.0 <5.0.0",
-          "resolved": "https://registry.npmjs.org/lodash.keys/-/lodash.keys-4.0.7.tgz"
-        }
-      }
-    },
-    "lodash.snakecase": {
-      "version": "4.0.1",
-      "from": "lodash.snakecase@>=4.0.1 <5.0.0",
-      "resolved": "https://registry.npmjs.org/lodash.snakecase/-/lodash.snakecase-4.0.1.tgz",
-      "dependencies": {
-        "lodash.deburr": {
-          "version": "4.0.0",
-          "from": "lodash.deburr@>=4.0.0 <5.0.0",
-          "resolved": "https://registry.npmjs.org/lodash.deburr/-/lodash.deburr-4.0.0.tgz",
-          "dependencies": {
-            "lodash.tostring": {
-              "version": "4.1.2",
-              "from": "lodash.tostring@>=4.0.0 <5.0.0",
-              "resolved": "https://registry.npmjs.org/lodash.tostring/-/lodash.tostring-4.1.2.tgz"
-            }
-          }
-        },
-        "lodash.words": {
-          "version": "4.1.0",
-          "from": "lodash.words@>=4.0.0 <5.0.0",
-          "resolved": "https://registry.npmjs.org/lodash.words/-/lodash.words-4.1.0.tgz",
-          "dependencies": {
-            "lodash.tostring": {
-              "version": "4.1.2",
-              "from": "lodash.tostring@>=4.0.0 <5.0.0",
-              "resolved": "https://registry.npmjs.org/lodash.tostring/-/lodash.tostring-4.1.2.tgz"
-            }
-          }
-        }
-      }
-    },
     "lodash.throttle": {
       "version": "4.0.1",
       "from": "lodash.throttle@>=4.0.1 <5.0.0",
@@ -487,6 +480,11 @@
           "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.0.tgz"
         }
       }
+    },
+    "react-addons-shallow-compare": {
+      "version": "15.1.0",
+      "from": "react-addons-shallow-compare@latest",
+      "resolved": "https://registry.npmjs.org/react-addons-shallow-compare/-/react-addons-shallow-compare-15.1.0.tgz"
     },
     "react-dom": {
       "version": "15.1.0",
