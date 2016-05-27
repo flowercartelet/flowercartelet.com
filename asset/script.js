@@ -44,8 +44,9 @@
  * 
  * fbjs:
  *   license: BSD-3-Clause (http://opensource.org/licenses/BSD-3-Clause)
+ *   maintainers: fb <opensource+npm@fb.com>, josephsavona <joesavona@fb.com>, spicyj <ben@benalpert.com>, steveluscher <steveluscher@fb.com>, wincent <greg@hurrell.net>, yungsters <yungsters@gmail.com>, yuzhi <yuzhi.z@gmail.com>, zpao <paul@oshannessy.com>
  *   homepage: https://github.com/facebook/fbjs#readme
- *   version: 0.8.2
+ *   version: 0.8.3
  * 
  * history:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -64,7 +65,7 @@
  *   author: Andy Earnshaw
  *   maintainers: andyearnshaw <andyearnshaw+npm@gmail.com>, caridy <caridy@gmail.com>
  *   homepage: https://github.com/andyearnshaw/Intl.js#readme
- *   version: 1.2.3
+ *   version: 1.2.4
  * 
  * intl-format-cache:
  *   license: BSD-3-Clause (http://opensource.org/licenses/BSD-3-Clause)
@@ -199,16 +200,16 @@
  * react-icon-base:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Goran Gajic <fero.null@gmail.com>
- *   maintainers: feroc1ty <fero.null@gmail.com>
+ *   maintainers: gorangajic <fero.null+npm@gmail.com>
  *   homepage: https://github.com/gorangajic/react-icon-base#readme
- *   version: 1.0.0
+ *   version: 2.0.0
  * 
  * react-icons:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Goran Gajic
  *   maintainers: feroc1ty <fero.null@gmail.com>
  *   homepage: https://github.com/gorangajic/react-icons#readme
- *   version: 2.0.1
+ *   version: 2.1.0
  * 
  * react-intl:
  *   license: BSD-3-Clause (http://opensource.org/licenses/BSD-3-Clause)
@@ -953,7 +954,7 @@ for(var now=require("performance-now"),root="undefined"==typeof window?global:wi
 "use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var n in r)Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n])}return e},_createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),React=require("react"),IconBase=require("react-icon-base"),FaTwitter=function(e){function t(){return _classCallCheck(this,t),_possibleConstructorReturn(this,Object.getPrototypeOf(t).apply(this,arguments))}return _inherits(t,e),_createClass(t,[{key:"render",value:function(){return React.createElement(IconBase,_extends({viewBox:"0 0 40 40"},this.props),React.createElement("g",null,React.createElement("path",{d:"m37.7 9.1q-1.5 2.2-3.7 3.7 0.1 0.3 0.1 1 0 2.9-0.9 5.8t-2.6 5.5-4.1 4.7-5.7 3.3-7.2 1.2q-6.1 0-11.1-3.3 0.8 0.1 1.7 0.1 5 0 9-3-2.4-0.1-4.2-1.5t-2.6-3.5q0.8 0.1 1.4 0.1 1 0 1.9-0.3-2.5-0.5-4.1-2.5t-1.7-4.6v0q1.5 0.8 3.3 0.9-1.5-1-2.4-2.6t-0.8-3.4q0-2 0.9-3.7 2.7 3.4 6.6 5.4t8.3 2.2q-0.2-0.9-0.2-1.7 0-3 2.1-5.1t5.1-2.1q3.2 0 5.3 2.3 2.4-0.5 4.6-1.7-0.8 2.5-3.2 3.9 2.1-0.2 4.2-1.1z"})))}}]),t}(React.Component);exports["default"]=FaTwitter,module.exports=exports["default"];
 
 },{"react":474,"react-icon-base":215}],215:[function(require,module,exports){
-"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var o in r)Object.prototype.hasOwnProperty.call(r,o)&&(e[o]=r[o])}return e},_createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var o=t[r];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,r,o){return r&&e(t.prototype,r),o&&e(t,o),t}}(),_get=function(e,t,r){for(var o=!0;o;){var n=e,a=t,i=r;o=!1,null===n&&(n=Function.prototype);var s=Object.getOwnPropertyDescriptor(n,a);if(void 0!==s){if("value"in s)return s.value;var l=s.get;if(void 0===l)return;return l.call(i)}var c=Object.getPrototypeOf(n);if(null===c)return;e=c,t=a,r=i,o=!0,s=c=void 0}},_react=require("react"),_react2=_interopRequireDefault(_react),IconBase=function(e){function t(){_classCallCheck(this,t),_get(Object.getPrototypeOf(t.prototype),"constructor",this).apply(this,arguments)}return _inherits(t,e),_createClass(t,[{key:"render",value:function(){var e={verticalAlign:"middle",display:"inline-block"},t={fill:"currentColor",width:this.props.size,height:this.props.size};return _react2["default"].createElement("svg",_extends({},t,this.props,{preserveAspectRatio:"xMidYMid meet",fit:!0,style:_extends({},e,this.props.style)}),this.props.children)}}]),t}(_react2["default"].Component);IconBase.defaultProps={size:"1em"},IconBase.propTypes={size:_react2["default"].PropTypes.oneOfType([_react2["default"].PropTypes.string,_react2["default"].PropTypes.number]),style:_react2["default"].PropTypes.object},exports["default"]=IconBase,module.exports=exports["default"];
+"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}function _objectWithoutProperties(e,t){var r={};for(var o in e)t.indexOf(o)>=0||Object.prototype.hasOwnProperty.call(e,o)&&(r[o]=e[o]);return r}Object.defineProperty(exports,"__esModule",{value:!0});var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var r=arguments[t];for(var o in r)Object.prototype.hasOwnProperty.call(r,o)&&(e[o]=r[o])}return e},_react=require("react"),_react2=_interopRequireDefault(_react),defaultSize="1em",IconBase=function(e,t){var r=e.children,o=e.size,s=e.style,a=_objectWithoutProperties(e,["children","size","style"]),c=t.reactIconBase,n=o?o:c&&c.size||defaultSize,i=_extends({verticalAlign:"middle"},c&&c.style||{},s);return _react2["default"].createElement("svg",_extends({fill:"currentColor",fit:!0,height:n,width:n},a,c,{preserveAspectRatio:"xMidYMid meet",style:i}),r)};IconBase.contextTypes={reactIconBase:_react.PropTypes.object},IconBase.propTypes={size:_react.PropTypes.oneOfType([_react.PropTypes.string,_react.PropTypes.number]),style:_react.PropTypes.object},exports["default"]=IconBase,module.exports=exports["default"];
 
 },{"react":474}],216:[function(require,module,exports){
 (function (process){
