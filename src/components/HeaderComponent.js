@@ -23,7 +23,7 @@ export default class HeaderComponent extends Component {
     return (
       <header>
         <h1>
-          <IndexLink to='/'>かーたんのほーむぺーじ</IndexLink>
+          <IndexLink to='/'>Lily Cartelet's screenshot album</IndexLink>
         </h1>
         <p className='description'>
           FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っている

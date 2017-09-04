@@ -23,7 +23,7 @@
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0"
   },
-  "description": "かーたんのほーむぺーじ",
+  "description": "A Lily Cartelet's screenshot album in the FINAL FANTASY XIV.",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -42,7 +42,7 @@
   },
   "license": "MIT",
   "main": "asset/script.js",
-  "name": "flowercartelet.github.io",
+  "name": "flowercartelet.com",
   "private": true,
   "scripts": {
     "build": "npm run build:script && npm run build:static",

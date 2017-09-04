@@ -7,7 +7,7 @@ export default class HtmlComponent extends Component {
       name: 'Lily Cartelet',
       twitterScreenName: '@flowercartelet'
     },
-    currentTitle: 'かーたん (Lily Cartelet) のほーむぺーじ',
+    currentTitle: 'Lily Cartelet\'s screenshot album',
     currentUri: 'https://flowercartelet.com/',
     description: 'FINAL FANTASY XIV (Fenrirサーバー) で学者を主に使っているLily Carteletのウェブサイトです。FINAL FANTASY XIVの個人的なスクリーンショットを置くための場所です。',
     image: {
