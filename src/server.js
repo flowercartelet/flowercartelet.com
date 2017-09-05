@@ -18,6 +18,7 @@ import matchRoutes from './utils/matchRoutes';
 import readStyleSheet from './utils/readStyleSheet';
 
 export const rootDirectory = path.join(__dirname, '..');
+export const buildDirectory = path.join(rootDirectory, 'build');
 
 export const locale = 'ja-jp';
 export const screenshotListUri = 'https://screenshot.flowercartelet.com/';
@@ -49,14 +50,14 @@ export const app = new Koa();
 
 app.use(async function(ctx, next) {
   if (ctx.url.startsWith('/asset') || ctx.url.startsWith('/image')) {
-    await serve(rootDirectory)(ctx, next);
+    await serve(buildDirectory)(ctx, next);
   } else {
     await next();
   }
 });
 
 (function() {
-  const assetDirectory = path.join(rootDirectory, 'asset');
+  const assetDirectory = path.join(buildDirectory, 'asset');
   const componentsDirectory = path.join(rootDirectory, 'src', 'components');
   const styleSheetPath = path.join(componentsDirectory, 'RootComponent.css');
   let styleSheet;

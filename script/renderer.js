@@ -28,17 +28,18 @@ function writeHtml(location, filePath, props) {
 async function main() {
   const store = createStore(reducers);
   const rootDirectory = path.join(__dirname, '..');
-  const assetDirectory = path.join(rootDirectory, 'asset')
+  const buildDirectory = path.join(rootDirectory, 'build');
+  const assetDirectory = path.join(buildDirectory, 'asset');
   const componentsDirectory = path.join(rootDirectory, 'src', 'components');
   const styleSheetPath = path.join(componentsDirectory, 'RootComponent.css');
   try {
     const manifest = await getManifest(assetDirectory);
     const styleSheet = await readStyleSheet(styleSheetPath);
-    const props = { manifest, store, styleSheet }
+    const props = { manifest, store, styleSheet };
     await store.dispatch(setScreenshotListUriAction(screenshotListUri));
     await Promise.all([
-      writeHtml('/', path.join(rootDirectory, 'index.html'), props),
-      writeHtml('/404.html', path.join(rootDirectory, '404.html'), props)
+      writeHtml('/', path.join(buildDirectory, 'index.html'), props),
+      writeHtml('/404.html', path.join(buildDirectory, '404.html'), props)
     ]);
   } catch (error) {
     console.error(error);

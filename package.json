@@ -39,6 +39,7 @@
     "cross-env": "^5.0.5",
     "exorcist": "^0.4.0",
     "licensify": "^3.1.2",
+    "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.1",
     "uglifyify": "^3.0.2"
   },
@@ -48,11 +49,13 @@
   "private": true,
   "scripts": {
     "build": "npm-run-all build:script build:static",
-    "build:script": "cross-env NODE_ENV=production browserify src/client.js -d -g uglifyify -p licensify -t babelify | exorcist asset/script.js.map -b './' -r '../' > asset/script.js",
+    "build:script": "cross-env NODE_ENV=production browserify src/client.js -d -g uglifyify -p licensify -t babelify | exorcist build/asset/script.js.map -b './' -r '../' > build/asset/script.js",
     "build:server": "babel ./src -d ./lib",
     "build:static": "babel-node ./script/renderer.js",
+    "postbuild": "cp favicon.ico robots.txt sitemap.xml build",
+    "prebuild": "mkdirp build/asset",
     "server": "node ./script/server.js",
-    "start": "npm-run-all build:script build:server server"
+    "start": "npm-run-all build build:server server"
   },
   "version": "1.0.0"
 }
