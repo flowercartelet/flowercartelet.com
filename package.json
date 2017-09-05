@@ -36,8 +36,10 @@
     "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "cross-env": "^5.0.5",
     "exorcist": "^0.4.0",
     "licensify": "^3.1.2",
+    "npm-run-all": "^4.1.1",
     "uglifyify": "^3.0.2"
   },
   "license": "MIT",
@@ -45,12 +47,12 @@
   "name": "flowercartelet.com",
   "private": true,
   "scripts": {
-    "build": "npm run build:script && npm run build:static",
-    "build:script": "NODE_ENV=production browserify src/client.js -d -g uglifyify -p licensify -t babelify | exorcist asset/script.js.map -b './' -r '../' > asset/script.js",
+    "build": "npm-run-all build:script build:static",
+    "build:script": "cross-env NODE_ENV=production browserify src/client.js -d -g uglifyify -p licensify -t babelify | exorcist asset/script.js.map -b './' -r '../' > asset/script.js",
     "build:server": "babel ./src -d ./lib",
     "build:static": "babel-node ./script/renderer.js",
     "server": "node ./script/server.js",
-    "start": "npm run build:script && npm run build:server && npm run server"
+    "start": "npm-run-all build:script build:server server"
   },
   "version": "1.0.0"
 }
